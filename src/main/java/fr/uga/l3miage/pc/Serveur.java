@@ -23,7 +23,7 @@ public class Serveur {
 
             //Connexion du deuxième joueur
             Player player2 = new Player(serverSocket.accept());
-            System.out.println("Joueur 2 connect�.");
+            System.out.println("Joueur 2 connectd�.");
 
             //On indique au deuxième joueur qu'il est le deuxième et on lui envoie le nombre de tours
             player2.out.writeInt(2);
