@@ -10,9 +10,10 @@ import static java.lang.Integer.parseInt;
 
 public class Client {
     public static void main(String[] args) {
-        try (Socket socket = new Socket("localhost", 12345)) {
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            DataInputStream in = new DataInputStream(socket.getInputStream());
+        try (Socket serverSocket = new Socket("localhost", 12345)) {
+            DataOutputStream out = new DataOutputStream(serverSocket.getOutputStream());
+            DataInputStream in = new DataInputStream(serverSocket.getInputStream());
+
             Scanner scanner = new Scanner(System.in);
             int nbTour = 0;
             int numeroConnexion = in.readInt();

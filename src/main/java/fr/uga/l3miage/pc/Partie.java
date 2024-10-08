@@ -1,6 +1,8 @@
 package fr.uga.l3miage.pc;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Partie {
     private Player player1;
@@ -8,6 +10,8 @@ public class Partie {
 
     private int nbTour;
     private Player gagnant;
+
+    private ArrayList<Tour> historique;
 
     public Partie(Player player1,Player player2,int nbTour){
         this.player1 = player1;
@@ -22,9 +26,16 @@ public class Partie {
         }
     }
 
+    public void AfficherHistorique(){
+        (historique).forEach((Tour tour) -> {
+            System.out.println("Tour numero "+tour.numero+" choix du joueur 1 : "+tour.choixJoueur1+" choix du joueur 2 : "+tour.choixJoueur2);
+        } );
+    }
+
     private void jouerTour() throws IOException {
         getPlayerChoices();
         sendResult();
+        historique.add(new Tour(player1.choice,player2.choice));
     }
 
     private void getPlayerChoices() throws IOException {
