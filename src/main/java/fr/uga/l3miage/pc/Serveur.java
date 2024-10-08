@@ -14,7 +14,7 @@ public class Serveur {
 
             // Connexion du premier joueur
             Player player1 = new Player(serverSocket.accept());
-            System.out.println("Joueur 1 connect�.");
+            System.out.println("Joueur 1 connecte�.");
 
             //On indique au premier joueur qu'il est le premier et on lui demande le nombre de tours
             player1.out.writeInt(1);
