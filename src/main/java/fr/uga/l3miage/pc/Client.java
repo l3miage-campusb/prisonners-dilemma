@@ -29,7 +29,7 @@ public class Client {
 
 
             for (int i = 0; i < nbTour; i++) {
-                System.out.println(" - Faites votre choix : 'coopérer' ou 'trahir' ?");
+                System.out.println(" - Faites votre choix : 'kooperer' ou 'trahir' ?");
                 String choice = scanner.nextLine();
                 out.writeUTF(choice);
 
