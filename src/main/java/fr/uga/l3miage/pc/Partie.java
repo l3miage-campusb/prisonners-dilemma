@@ -28,7 +28,7 @@ public class Partie {
 
     public void AfficherHistorique(){
         (historique).forEach((Tour tour) -> {
-            System.out.println("Tour numero "+tour.numero+" choix du joueur 1 : "+tour.choixJoueur1+" choix du joueur 2 : "+tour.choixJoueur2);
+            System.out.println("Tour numéro "+tour.numero+" choix du joueur 1 : "+tour.choixJoueur1+" choix du joueur 2 : "+tour.choixJoueur2);
         } );
     }
 
