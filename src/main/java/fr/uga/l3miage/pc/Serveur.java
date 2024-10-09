@@ -12,14 +12,17 @@ public class Serveur {
         try (ServerSocket serverSocket = new ServerSocket(12345)) {
             System.out.println("Serveur en attente des joueurs...");
 
+
             // Connexion du premier joueur
             Player player1 = new Player(serverSocket.accept());
             System.out.println("Joueur 1 connecte�.");
+
 
             //On indique au premier joueur qu'il est le premier et on lui demande le nombre de tours
             player1.out.writeInt(1);
             int nbTour = player1.in.readInt();
             System.out.println("nb tours  : "+nbTour);
+
 
             //Connexion du deuxième joueur
             Player player2 = new Player(serverSocket.accept());
@@ -29,9 +32,12 @@ public class Serveur {
             player2.out.writeInt(2);
             player2.out.writeInt(nbTour);
 
+
             Partie partie = new Partie(player1,player2,nbTour);
 
+
             partie.jouerPartie();
+
 
 
             // Fermer les connexions
