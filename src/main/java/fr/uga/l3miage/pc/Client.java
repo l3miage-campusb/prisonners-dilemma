@@ -9,6 +9,13 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Client {
+
+    private static void afficherStrategieDisponible(){
+        System.out.println("Strategie disponible : 1, 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9");
+    }
+
+
+
     public static void main(String[] args) {
         try (Socket serverSocket = new Socket("localhost", 12345)) {
             DataOutputStream out = new DataOutputStream(serverSocket.getOutputStream());
@@ -28,14 +35,27 @@ public class Client {
                 nbTour = in.readInt();
             }
 
+            boolean continuer = true;
+            int i =0;
+            while (i<nbTour && continuer) {
+                System.out.println(" - Voulez-vous continuer à jouer ? (Y/N)");
+                continuer = scanner.nextLine().equals("Y");
+                if (continuer){
+                    System.out.println(" - Faites votre choix : 'cooperer' ou 'trahir' ?");
+                    String choice = scanner.nextLine();
+                    out.writeUTF(choice);
 
-            for (int i = 0; i < nbTour; i++) {
-                System.out.println(" - Faites votre choix : 'kooperer' ou 'trahir' ?");
-                String choice = scanner.nextLine();
-                out.writeUTF(choice);
+                    String resultat = in.readUTF();
+                    System.out.println(resultat);
+                }
+                else{
+                    System.out.println(" - Choisissez une strategie parmis : ");
+                    Client.afficherStrategieDisponible();
+                    String strategie = scanner.nextLine();
+                    out.writeUTF(strategie);
+                }
+                i++;
 
-                String resultat = in.readUTF();
-                System.out.println(resultat);
             }
 
 
