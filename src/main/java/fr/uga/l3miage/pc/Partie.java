@@ -11,7 +11,7 @@ public class Partie {
     private int nbTour;
     private Player gagnant;
 
-    private ArrayList<Tour> historique;
+    private ArrayList<Tour> historique = new ArrayList<Tour>();
 
     public Partie(Player player1,Player player2,int nbTour){
         this.player1 = player1;
