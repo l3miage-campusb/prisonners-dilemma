@@ -12,6 +12,7 @@ public class Player {
     int score = 0;
     DataInputStream in;
     DataOutputStream out;
+    boolean isPlaying = true;
 
 
     public Player(Socket socket) throws IOException {
@@ -25,8 +26,5 @@ public class Player {
 
     }
 
-    public void sendInt(int msg){
-
-    }
 
 }

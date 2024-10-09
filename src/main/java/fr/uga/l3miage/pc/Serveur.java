@@ -35,10 +35,7 @@ public class Serveur {
 
             Partie partie = new Partie(player1,player2,nbTour);
 
-
             partie.jouerPartie();
-
-
 
             // Fermer les connexions
             player1.socket.close();
