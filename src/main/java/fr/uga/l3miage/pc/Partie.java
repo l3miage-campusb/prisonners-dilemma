@@ -71,10 +71,10 @@ public class Partie {
 
     private void InstanciateDisconnectedChoice(){
         if(!player1.isPlaying){
-            player1.choice = strategie.faireUnChoix(historique);
+            player1.choice = strategie.faireUnChoix(historique,1);
         }
         else if(!player2.isPlaying){
-            player2.choice = strategie.faireUnChoix(historique);
+            player2.choice = strategie.faireUnChoix(historique,2);
         }
     }
 
@@ -106,9 +106,10 @@ public class Partie {
                 player.choice = Choice.TRAHIR;
                 break;
             case "1":
-                HandleDisconnection(player, new Strategie());
+                HandleDisconnection(player, new StrategieToujoursCooperer());
+                break;
             case "2":
-                HandleDisconnection(player, new Strategie());
+                HandleDisconnection(player, new StrategieToujoursTrahir());
                 break;
 
             default:                                 //Si one ne comprend pas la réponse du joeuur, on se dit qu'il a voulu coopérer
@@ -120,11 +121,23 @@ public class Partie {
     private void HandleDisconnection(Player player, Strategie strategie){
         player.isPlaying = false;
         this.strategie = strategie;
-        player.choice = strategie.faireUnChoix(historique);
+        //a changer absolument ca brule mes yeux mais il est tard flemme
+
+        if(!player1.isPlaying){
+            player.choice = strategie.faireUnChoix(historique,1);
+            System.out.println("choix mis dans j1 (qui s est deco): "+player.choice);
+        }
+        else if (!player2.isPlaying) {
+            player.choice = strategie.faireUnChoix(historique,2);
+            System.out.println("choix mis dans j2 (qui s est deco): "+player.choice);
+        }
+
     }
 
     private void sendResult() throws IOException {
         //Envoie des r?sultats
+        System.out.println("choix final du joeuur 1 : "+player1.choice+" choix final du joueur 2 : "+player2.choice);
+
         if(player1.choice == Choice.TRAHIR && player2.choice == Choice.TRAHIR){
             if(player1.isPlaying){
                 player1.out.writeUTF("Vous avez tous les deux trahis l'autre");

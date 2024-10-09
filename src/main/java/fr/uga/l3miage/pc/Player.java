@@ -7,7 +7,6 @@ import java.net.Socket;
 
 public class Player {
     Socket socket;
-
     Choice choice;
     int score = 0;
     DataInputStream in;
