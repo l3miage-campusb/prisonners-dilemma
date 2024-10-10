@@ -5,8 +5,12 @@ import java.util.ArrayList;
 public class StrategieDonnantDonnant implements Strategie{
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
-        Tour dernierTour = historique.get(historique.size()-1);
+        //Si on a pas d'historique de tou,r on revoit le choix de cooperer par defaut
+        if(historique.size() == 0){
+            return Choice.COOPERER;
+        }
 
+        Tour dernierTour = historique.get(historique.size()-1);
         if(joueurRemplace==1){
             return dernierTour.choixJoueur2;
         }

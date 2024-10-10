@@ -12,6 +12,7 @@ public class Partie {
     private Player gagnant;
     private Strategie strategie;
 
+
     private ArrayList<Tour> historique = new ArrayList<Tour>();
 
     public Partie(Player player1,Player player2,int nbTour){
@@ -29,7 +30,9 @@ public class Partie {
         }
 
         if (!player1.isPlaying && !player2.isPlaying) {
+
             System.out.println("Les deux joeuurs se sont decconectés en meme temps");
+
         }
 
         else if(!player1.isPlaying ){
@@ -62,6 +65,7 @@ public class Partie {
     }
 
     private void jouerTourAlone(Player player) throws IOException {
+
         //On récupére le choix du joueur encore en train de jouer
         getPlayerChoice(player);
         //On instancie automatiquement le choix du joueur qui a quitté é l'aide de la stratégie qu'il a donner avant de partir;
@@ -105,14 +109,24 @@ public class Partie {
             case "trahir":
                 player.choice = Choice.TRAHIR;
                 break;
-            case "1":
+            case "Aleatoire":
+                HandleDisconnection(player, new StrategieAleatoire());
+                break;
+            case "DonnantDonnant":
+                HandleDisconnection(player, new StrategieDonnantDonnant());
+                break;
+            case "Rancunier":
+                HandleDisconnection(player, new StrategieRancunier());
+                break;
+            case "ToujoursCooperer":
                 HandleDisconnection(player, new StrategieToujoursCooperer());
                 break;
-            case "2":
+            case "ToujoursTrahir":
                 HandleDisconnection(player, new StrategieToujoursTrahir());
                 break;
 
             default:                                 //Si one ne comprend pas la réponse du joeuur, on se dit qu'il a voulu coopérer
+
                 player.choice = Choice.COOPERER;
 
         }
