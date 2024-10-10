@@ -66,9 +66,7 @@ public class Partie {
 
     private void jouerTourAlone(Player player) throws IOException {
 
-        //On récupére le choix du joueur encore en train de jouer
         getPlayerChoice(player);
-        //On instancie automatiquement le choix du joueur qui a quitté é l'aide de la stratégie qu'il a donner avant de partir;
         InstanciateDisconnectedChoice();
         sendResult();
     }
