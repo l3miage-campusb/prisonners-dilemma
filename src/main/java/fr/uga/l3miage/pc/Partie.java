@@ -29,7 +29,7 @@ public class Partie {
         }
 
         if (!player1.isPlaying && !player2.isPlaying) {
-            System.out.println("Les deux joeuurs se sont decconectés en meme temps");
+            System.out.println("Les deux joeuurs se sont decconectÃ©s en meme temps");
         }
 
         else if(!player1.isPlaying ){
@@ -62,9 +62,9 @@ public class Partie {
     }
 
     private void jouerTourAlone(Player player) throws IOException {
-        //On récupère le choix du joueur encore en train de jouer
+        //On rÃ©cupÃ©re le choix du joueur encore en train de jouer
         getPlayerChoice(player);
-        //On instancie automatiquement le choix du joueur qui a quitté à l'aide de la stratégie qu'il a donner avant de partir;
+        //On instancie automatiquement le choix du joueur qui a quittÃ© Ã© l'aide de la stratÃ©gie qu'il a donner avant de partir;
         InstanciateDisconnectedChoice();
         sendResult();
     }
@@ -112,7 +112,7 @@ public class Partie {
                 HandleDisconnection(player, new StrategieToujoursTrahir());
                 break;
 
-            default:                                 //Si one ne comprend pas la réponse du joeuur, on se dit qu'il a voulu coopérer
+            default:                                 //Si one ne comprend pas la rÃ©ponse du joeuur, on se dit qu'il a voulu coopÃ©rer
                 player.choice = Choice.COOPERER;
 
         }

@@ -38,7 +38,7 @@ public class Client {
             boolean continuer = true;
             int i =0;
             while (i<nbTour && continuer) {
-                System.out.println(" - Voulez-vous continuer à jouer ? (Y/N)");
+                System.out.println(" - Voulez-vous continuer Ã  jouer ? (Y/N)");
                 continuer = scanner.nextLine().equals("Y");
                 if (continuer){
                     System.out.println(" - Faites votre choix : 'cooperer' ou 'trahir' ?");
