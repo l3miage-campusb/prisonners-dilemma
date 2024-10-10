@@ -42,9 +42,13 @@ public class Partie {
             finishGameAlone(player1,nbTour-i);
         }
 
+        System.out.println("Score final player1 : "+player1.score);
+        System.out.println("Score final player2 : "+player2.score);
+        AfficherHistorique();
     }
 
     public void AfficherHistorique(){
+        System.out.println("Historique de la partie :");
         (historique).forEach((Tour tour) -> {
             System.out.println("Tour numéro "+tour.numero+" choix du joueur 1 : "+tour.choixJoueur1+" choix du joueur 2 : "+tour.choixJoueur2);
         } );
