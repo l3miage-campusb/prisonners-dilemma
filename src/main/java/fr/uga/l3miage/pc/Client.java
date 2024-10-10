@@ -17,7 +17,7 @@ public class Client {
     }
 
     private static int asknbTour(Scanner scanner){
-        System.out.println("Combien de tours voulez vous jouer ?");
+        System.out.println("Combien de tours voulez vous joueer ?");
         //PAs encore de verification sur le nombre de tour donné
         int nbTour = scanner.nextInt();
         
