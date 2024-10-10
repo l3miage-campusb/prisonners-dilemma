@@ -16,11 +16,11 @@ public class Client {
         System.out.println("Strategie disponible : Aleatoire, DonnantDonnant , Rancunier , ToujoursCooperer , ToujoursTrahir");
     }
 
-    private static int asknbTour(Scanner scanner){
+    private static String asknbTour(Scanner scanner){
         System.out.println("Combien de tours voulez vous joueer ?");
         //PAs encore de verification sur le nombre de tour donné
-        int nbTour = scanner.nextInt();
-        
+        String nbTour = scanner.nextLine();
+
         return nbTour;
     }
 
@@ -73,7 +73,7 @@ public class Client {
             System.out.println("numero de connexion : "+numeroConnexion);
             if(numeroConnexion == 1){
 
-                nbTour = asknbTour(scanner);
+                nbTour = parseInt(asknbTour(scanner));
                 out.writeInt(nbTour);
                 System.out.println("nb tour envoyer au serveru : "+nbTour);
             }
