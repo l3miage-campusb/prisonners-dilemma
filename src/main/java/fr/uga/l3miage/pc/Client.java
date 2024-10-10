@@ -85,6 +85,7 @@ public class Client {
             int i =0;
             while (i<nbTour && continuer) {
                 continuer = askToContinue(scanner).equals("Y");
+
                 if (continuer){
                     String choice = askChoice(scanner);
                     out.writeUTF(choice);
