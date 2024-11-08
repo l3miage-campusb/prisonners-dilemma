@@ -15,7 +15,7 @@ export class AccueilComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Connecter le client WebSocket au serveur dès que le composant est initialisé
-    // Vérifier la connexion dans le service
+    // Vérifier la connexion dans le servicea
     this.websocketService.getConnectionStatus().subscribe(status => {
       this.isConnected = status;
     });
