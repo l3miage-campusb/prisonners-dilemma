@@ -18,8 +18,11 @@ export class AccueilComponent implements OnInit, OnDestroy {
     // Vérifier la connexion dans le servicea
     this.websocketService.getConnectionStatus().subscribe(status => {
       this.isConnected = status;
+      this.websocketService.sendMessage("/app/round","2");
     });
     console.log("osef de l errue je toure ?");
+
+
   }
 
   ngOnDestroy(): void {
@@ -36,10 +39,6 @@ export class AccueilComponent implements OnInit, OnDestroy {
   }
 
   // Fonction pour récupérer les messages
-  getMessages(): void {
-    this.websocketService.getMessages().subscribe((message: string) => {
-      this.message = message;
-      console.log('Message reçu:', message);
-    });
-  }
+
+
 }
