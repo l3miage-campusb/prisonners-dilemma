@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Client, IMessage } from '@stomp/stompjs'; // Assurez-vous d'importer Client et IMessage
 import * as SockJS from 'sockjs-client';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
 
-  private idSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private idSubject: Subject<number> = new Subject<number>();
 
-  private roundSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  roundCount: number = 0 ;
+  private roundSubject:Subject<number> = new Subject<number>();
 
   private stompClient: Client;
-  private connectionStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private connectionStatus:Subject<boolean> = new Subject<boolean>();
 
   constructor() {
     this.stompClient = new Client({
@@ -40,6 +41,7 @@ export class WebsocketService {
       this.stompClient.subscribe('/topic/round', (message: IMessage) => {
         console.log('Message reçu du topic round:', message.body);
         this.roundSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
+        this.roundCount = Number(message.body);
       });
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
@@ -50,8 +52,6 @@ export class WebsocketService {
         this.connectionStatus.next(false); // Met à jour l'état de la connexion
         console.log('Disconnected');
       };
-
-
     }
   }
 

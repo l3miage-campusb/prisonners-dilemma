@@ -1,0 +1,11 @@
+<div class="game-container">
+  <span>nb Round Restant : {{roundCount}}/{{originalRoundCount}}</span>
+  <h2>Make your choice:</h2>
+
+  <button [disabled]="playerChoice != ''" mat-raised-button color="primary" (click)="cooperate()">Cooperate</button>
+  <button [disabled]="playerChoice != ''" mat-raised-button color="warn" (click)="betray()">Betray</button>
+
+  <div *ngIf="playerChoice">
+    <p>You have chosen to {{ playerChoice }}.</p>
+  </div>
+</div>

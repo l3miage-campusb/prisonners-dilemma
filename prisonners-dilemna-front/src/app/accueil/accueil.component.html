@@ -7,18 +7,17 @@
   <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
   <div *ngIf="isConnected">
     <span>Id du joueur : {{ id }}</span>
-    <button mat-raised-button color="primary" type="submit" class="playAloneButton">Jouer seul</button>
+    <button **ngIf="id==1" mat-raised-button color="primary" type="submit" class="playAloneButton">Jouer seul</button>
 
     <div *ngIf="!isOtherPlayerConnected">
       <p class="waiting-message">Waiting for other player...</p>
     </div>
-
-    <form (ngSubmit)="sendRound()" >
+    <form (ngSubmit)="sendRound()" *ngIf="isOtherPlayerConnected && id==1">
       <mat-form-field appearance="fill" >
         <mat-label>Number of Rounds</mat-label>
         <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" >
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="id != 1" >Send</button>
+      <button mat-raised-button color="primary" type="submit" >Send</button>
     </form>
   </div>
 </div>
