@@ -11,7 +11,9 @@ export class AccueilComponent implements OnInit, OnDestroy {
   isConnected: boolean = false;
   message: string = '';
 
-  constructor(private websocketService: WebsocketService) {}
+  roundCount: number = 0 ;
+
+  constructor(public websocketService: WebsocketService) {}
 
   ngOnInit(): void {
     // Connecter le client WebSocket au serveur dès que le composant est initialisé
@@ -36,6 +38,13 @@ export class AccueilComponent implements OnInit, OnDestroy {
       this.websocketService.sendMessage('/app/choice', 'Message de test');
       console.log('Message envoyé!');
     }
+  }
+  // Fonction pour envoyer le nombre de Roudns au serveur
+  sendRound() {
+    if(this.roundCount){
+      this.websocketService.sendMessage('/app/round',this.roundCount.toString());
+    }
+
   }
 
   // Fonction pour récupérer les messages

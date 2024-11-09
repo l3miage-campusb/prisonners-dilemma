@@ -7,6 +7,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WebsocketService {
+
+  private id : number = 0;
+  private isOtherPlayerConnected : boolean = false;
+
+
   private stompClient: Client;
   private connectionStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -35,6 +40,19 @@ export class WebsocketService {
       this.stompClient.subscribe('/topic/round', (message: IMessage) => {
         console.log('Message reçu du topic round:', message.body);
       });
+
+      this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
+        if(message.body == "1"){
+          this.id = 1;
+        }
+        else if(message.body == "2"){
+          if(!this.id){
+            this.id = 2;
+          }
+          this.isOtherPlayerConnected = true;
+        }
+        console.log('Message reçu du topic connected:', message.body);
+      });
     };
 
     this.stompClient.onDisconnect = () => {
@@ -50,7 +68,6 @@ export class WebsocketService {
   sendMessage(destination: string, body: string): void {
     console.log("Envoi du message...");
     if (this.stompClient && this.stompClient.connected) {
-      // Utilisez publish() au lieu de send()
       this.stompClient.publish({ destination: destination, body: body });
       console.log('Message envoyé à:', destination);
     } else {
@@ -72,5 +89,13 @@ export class WebsocketService {
   // Obtenir l'état de la connexion
   getConnectionStatus(): Observable<boolean> {
     return this.connectionStatus.asObservable();
+  }
+
+
+  getOtherPlayerConnected() : boolean {
+    return this.isOtherPlayerConnected;
+  }
+  getId() : number{
+    return this.id;
   }
 }
