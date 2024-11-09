@@ -41,7 +41,7 @@ public class Serveur {
             player1.socket.close();
             player2.socket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Erreur lors de la creation du socket du serveur");
         }
     }
 }

@@ -12,6 +12,7 @@ public class Partie {
     private Player gagnant;
     private Strategie strategie;
 
+
     private ArrayList<Tour> historique = new ArrayList<Tour>();
 
     public Partie(Player player1,Player player2,int nbTour){
@@ -29,7 +30,9 @@ public class Partie {
         }
 
         if (!player1.isPlaying && !player2.isPlaying) {
-            System.out.println("Les deux joeuurs se sont decconectés en meme temps");
+
+            System.out.println("Les deux joeuurs se sont decconectÃ©s en meme temps");
+
         }
 
         else if(!player1.isPlaying ){
@@ -39,9 +42,13 @@ public class Partie {
             finishGameAlone(player1,nbTour-i);
         }
 
+        System.out.println("Score final player1 : "+player1.score);
+        System.out.println("Score final player2 : "+player2.score);
+        AfficherHistorique();
     }
 
     public void AfficherHistorique(){
+        System.out.println("Historique de la partie :");
         (historique).forEach((Tour tour) -> {
             System.out.println("Tour numÃ©ro "+tour.numero+" choix du joueur 1 : "+tour.choixJoueur1+" choix du joueur 2 : "+tour.choixJoueur2);
         } );
@@ -62,9 +69,8 @@ public class Partie {
     }
 
     private void jouerTourAlone(Player player) throws IOException {
-        //On récupère le choix du joueur encore en train de jouer
+
         getPlayerChoice(player);
-        //On instancie automatiquement le choix du joueur qui a quitté à l'aide de la stratégie qu'il a donner avant de partir;
         InstanciateDisconnectedChoice();
         sendResult();
     }
@@ -105,14 +111,24 @@ public class Partie {
             case "trahir":
                 player.choice = Choice.TRAHIR;
                 break;
-            case "1":
+            case "Aleatoire":
+                HandleDisconnection(player, new StrategieAleatoire());
+                break;
+            case "DonnantDonnant":
+                HandleDisconnection(player, new StrategieDonnantDonnant());
+                break;
+            case "Rancunier":
+                HandleDisconnection(player, new StrategieRancunier());
+                break;
+            case "ToujoursCooperer":
                 HandleDisconnection(player, new StrategieToujoursCooperer());
                 break;
-            case "2":
+            case "ToujoursTrahir":
                 HandleDisconnection(player, new StrategieToujoursTrahir());
                 break;
 
-            default:                                 //Si one ne comprend pas la réponse du joeuur, on se dit qu'il a voulu coopérer
+            default:                                 //Si one ne comprend pas la rÃ©ponse du joeuur, on se dit qu'il a voulu coopÃ©rer
+
                 player.choice = Choice.COOPERER;
 
         }

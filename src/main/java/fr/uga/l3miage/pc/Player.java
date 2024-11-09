@@ -20,7 +20,7 @@ public class Player {
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream()) ;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Erreur lors de la creation des canaux de communications");
         }
 
     }
