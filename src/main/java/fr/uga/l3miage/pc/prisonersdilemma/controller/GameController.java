@@ -25,16 +25,6 @@ public class GameController {
         messagingTemplate.convertAndSend("/topic/results", "peneeeeeeeee");
     }
 
-    // Méthode pour gérer les rounds
-    @MessageMapping("/round")  // Le message envoyé à /app/round sera traité ici
-    @SendTo("/topic/round")
-    public String  handleRounds(String nbRound) {
-
-        // Traitement du nombre de rounds, par exemple un simple calcul ou gestion
-
-        // Envoie du résultat à tous les clients abonnés au topic /topi     c/results
-        return nbRound;
-    }
 
     // Exemple de trait ement des choix
     private String processChoices(ChoiceMessage message) {

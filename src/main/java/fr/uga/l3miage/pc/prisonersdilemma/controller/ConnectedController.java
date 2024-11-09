@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 public class ConnectedController {
 
     private final SimpMessagingTemplate messagingTemplate;
-
+    private int nbJoueur = 0;
     public ConnectedController(SimpMessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
     }
@@ -18,9 +18,10 @@ public class ConnectedController {
     // Méthode pour gérer les rounds
     @MessageMapping("/connected")  // Le message envoyé à /app/round sera traité ici
     @SendTo("/topic/connected")
-    public String  handleConnected(String connected) {
+    public String  handleConnected() {
         // Envoie du résultat à tous les clients abonnés au topic /topic/results
-        return connected;
+        nbJoueur++;
+        return String.valueOf(nbJoueur);
     }
 
 

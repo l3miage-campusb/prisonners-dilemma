@@ -11,6 +11,9 @@ export class AccueilComponent implements OnInit, OnDestroy {
   isConnected: boolean = false;
   message: string = '';
 
+  id : number = 0;
+  isOtherPlayerConnected : boolean = false;
+
   roundCount: number = 0 ;
 
   constructor(public websocketService: WebsocketService) {}
@@ -20,11 +23,24 @@ export class AccueilComponent implements OnInit, OnDestroy {
     // Vérifier la connexion dans le servicea
     this.websocketService.getConnectionStatus().subscribe(status => {
       this.isConnected = status;
-      this.websocketService.sendMessage("/app/round","2");
+      console.log("dans le subscirbe du stauys jai : ",status);
+      if(status){
+        this.websocketService.sendMessage("/app/connected","");
+      }
     });
-    console.log("osef de l errue je toure ?");
+    this.websocketService.getRoundObserver().subscribe(round => {
+      this.roundCount = round;
+    });
 
-
+    this.websocketService.getidObserver().subscribe(id => {
+        if(!this.id){
+          this.id = id;
+        }
+        if(id > 1) {
+          this.isOtherPlayerConnected = true;
+        }
+        console.log('Message reçu du topic connected:', id);
+      });
   }
 
   ngOnDestroy(): void {

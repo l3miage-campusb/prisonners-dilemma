@@ -8,9 +8,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class WebsocketService {
 
-  private id : number = 0;
-  private isOtherPlayerConnected : boolean = false;
+  private idSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
+  private roundSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   private stompClient: Client;
   private connectionStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -27,11 +27,11 @@ export class WebsocketService {
       heartbeatIncoming: 4000,
       heartbeatOutgoing: 4000,
     });
-
+    console.log("je fais jext tur");
+    // Activation de la connexion STOMP
+    this.stompClient.activate();
     this.stompClient.onConnect = (frame) => {
       console.log('Connected: peneeeeeeeeeeeeeeeeeeee' + frame);
-      this.connectionStatus.next(true);  // Met à jour l'état de la connexion
-
       // S'abonner aux topics après la connexion
       this.stompClient.subscribe('/topic/results', (message: IMessage) => {
         console.log('Message reçu:', message.body);
@@ -39,35 +39,26 @@ export class WebsocketService {
 
       this.stompClient.subscribe('/topic/round', (message: IMessage) => {
         console.log('Message reçu du topic round:', message.body);
+        this.roundSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
       });
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
-        if(message.body == "1"){
-          this.id = 1;
-        }
-        else if(message.body == "2"){
-          if(!this.id){
-            this.id = 2;
-          }
-          this.isOtherPlayerConnected = true;
-        }
-        console.log('Message reçu du topic connected:', message.body);
+        this.idSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
       });
-    };
+      this.connectionStatus.next(true);
+      this.stompClient.onDisconnect = () => {
+        this.connectionStatus.next(false); // Met à jour l'état de la connexion
+        console.log('Disconnected');
+      };
 
-    this.stompClient.onDisconnect = () => {
-      this.connectionStatus.next(false); // Met à jour l'état de la connexion
-      console.log('Disconnected');
-    };
 
-    // Activation de la connexion STOMP
-    this.stompClient.activate();
+    }
   }
 
-  // Méthode pour envoyer un message
-  sendMessage(destination: string, body: string): void {
-    console.log("Envoi du message...");
-    if (this.stompClient && this.stompClient.connected) {
+    // Méthode pour envoyer un message
+    sendMessage(destination: string, body: string): void {
+      console.log("Envoi du message : " + destination + body);
+      if(this.stompClient && this.stompClient.connected) {
       this.stompClient.publish({ destination: destination, body: body });
       console.log('Message envoyé à:', destination);
     } else {
@@ -91,11 +82,10 @@ export class WebsocketService {
     return this.connectionStatus.asObservable();
   }
 
-
-  getOtherPlayerConnected() : boolean {
-    return this.isOtherPlayerConnected;
+  getRoundObserver(): Observable<number> {
+    return this.roundSubject.asObservable();
   }
-  getId() : number{
-    return this.id;
+  getidObserver(): Observable<number> {
+    return this.idSubject.asObservable();
   }
 }
