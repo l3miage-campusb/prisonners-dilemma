@@ -32,7 +32,7 @@ public class GameController {
 
         // Traitement du nombre de rounds, par exemple un simple calcul ou gestion
 
-        // Envoie du résultat à tous les clients abonnés au topic /topic/results
+        // Envoie du résultat à tous les clients abonnés au topic /topi     c/results
         return nbRound;
     }
 
