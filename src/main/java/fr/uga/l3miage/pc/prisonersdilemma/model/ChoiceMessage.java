@@ -24,7 +24,4 @@ public class ChoiceMessage {
         return choice;
     }
 
-    public void setChoice(String choice) {
-        this.choice = choice;
-    }
 }

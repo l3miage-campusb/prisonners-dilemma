@@ -1,7 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { Client, IMessage } from '@stomp/stompjs'; // Assurez-vous d'importer Client et IMessage
 import * as SockJS from 'sockjs-client';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import {resultMessage} from "../app/models/resultMessage";
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,12 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class WebsocketService {
 
   private idSubject: Subject<number> = new Subject<number>();
+  id:number = 0;
 
   roundCount: number = 0 ;
   private roundSubject:Subject<number> = new Subject<number>();
+
+  private resultSubject: Subject<resultMessage> = new Subject<resultMessage>();
 
   private stompClient: Client;
   private connectionStatus:Subject<boolean> = new Subject<boolean>();
@@ -44,11 +49,17 @@ export class WebsocketService {
         this.roundCount = Number(message.body);
       });
 
+      this.stompClient.subscribe('/topic/result', (message: IMessage) => {
+        console.log("j ai recu le message de result : ",message.body);
+        // this.resultSubject.next(message.body); // Mettre à jour le nombre de rounds
+      });
+
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
         this.idSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
       });
       this.connectionStatus.next(true);
       this.stompClient.onDisconnect = () => {
+        console.log("je rentre dans le ondisconnect");
         this.connectionStatus.next(false); // Met à jour l'état de la connexion
         console.log('Disconnected');
       };

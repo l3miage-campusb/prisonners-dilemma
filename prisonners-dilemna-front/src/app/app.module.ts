@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { GameComponent } from './game/game.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GameComponent } from './game/game.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
