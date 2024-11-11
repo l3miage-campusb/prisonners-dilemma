@@ -1,12 +1,16 @@
-package fr.uga.l3miage.pc;
+package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
+
+import fr.uga.l3miage.pc.Choice;
+import fr.uga.l3miage.pc.Tour;
 
 import java.util.ArrayList;
 
-public class StrategieDonnantDonnant implements Strategie{
+public class StrategyDonnantDonnant implements IStrategy{
+
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
         //Si on a pas d'historique de tou,r on revoit le choix de cooperer par defaut
-        if(historique.size() == 0){
+        if(historique.size() == 0 || historique.size() == 1){
             return Choice.COOPERER;
         }
 
@@ -22,4 +26,6 @@ public class StrategieDonnantDonnant implements Strategie{
         return null;  //garanti qu'on passe pas par la car c'est le serveur qui envoit soit
         //1 soit 2
     }
+
+
 }
