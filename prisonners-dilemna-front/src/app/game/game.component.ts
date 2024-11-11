@@ -3,6 +3,7 @@ import { WebsocketService } from '../../services/websocket.service';  // Assurez
 import { Router } from '@angular/router'; // Import du Router pour la navigation si nécessaire
 import { ChoiceMessage } from '../models/choiceMessage';
 import { Choice } from '../enums/choice.enum';
+import { gameInfo } from '../models/gameInfo';
 
 @Component({
   selector: 'app-game',
@@ -12,26 +13,39 @@ import { Choice } from '../enums/choice.enum';
 export class GameComponent implements OnInit {
   // Variable pour stocker le choix de l'utilisateur
   playerChoice!: Choice ;
-  roundCount : number = 0;
+  choiceDone : boolean = false;
+  gameInfo : gameInfo = {"roundCount" : 0, "scoreJ1" : 0, "scoreJ2" : 0,"resultat" : "" };
   originalRoundCount : number = 0;
 
   constructor(private websocketService: WebsocketService) {
-    this.roundCount = this.websocketService.roundCount;
+    this.gameInfo.roundCount = this.websocketService.roundCount;
     this.originalRoundCount = this.websocketService.roundCount;
   }
 
   ngOnInit(): void {
+    this.websocketService.getResultObserver().subscribe(result => {
+      this.gameInfo.scoreJ1 = result.scoreJ1;
+      this.gameInfo.scoreJ2 = result.scoreJ2;
 
-  }
+      if(this.websocketService.id == 1){
+        this.gameInfo.resultat = result.reponseJ1;
+      }
+      else if (this.websocketService.id == 2){
+        this.gameInfo.resultat = result.reponseJ2;
+      }
+  })
+}
 
   // Fonction pour envoyer le choix "Coopérer"
   cooperer() {
+    this.choiceDone = true;
     this.playerChoice = Choice.Cooperer;
     this.sendChoice();
   }
 
   // Fonction pour envoyer le choix "Trahir"
   trahir() {
+    this.choiceDone = true;
     this.playerChoice = Choice.Trahir;
     this.sendChoice();
   }
@@ -44,5 +58,19 @@ export class GameComponent implements OnInit {
       choice: this.playerChoice
     }
     this.websocketService.sendMessage("/app/choice",JSON.stringify(message));
+  }
+
+  continueGame(){
+    this.choiceDone = false;
+    this.gameInfo.roundCount --;
+    this.gameInfo.resultat = "";
+  }
+
+  stopGame(){
+
+  }
+
+  isGameEnded(){
+    return this.gameInfo.roundCount ==0;
   }
 }

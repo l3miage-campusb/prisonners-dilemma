@@ -6,6 +6,7 @@
 
   <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
   <div *ngIf="isConnected">
+    <span *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</span>
     <span>Id du joueur : {{ id }}</span>
     <button **ngIf="id==1" mat-raised-button color="primary" type="submit" class="playAloneButton">Jouer seul</button>
 

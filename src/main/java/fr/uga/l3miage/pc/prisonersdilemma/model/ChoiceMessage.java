@@ -1,13 +1,15 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model;
 
+import fr.uga.l3miage.pc.Choice;
+
 public class ChoiceMessage {
     private String playerId;
-    private String choice; // Trahir ou Cooperer
+    private Choice choice; // Trahir ou Cooperer
 
     // Constructeur, getters et setters
     public ChoiceMessage() {}
 
-    public ChoiceMessage(String playerId, String choice) {
+    public ChoiceMessage(String playerId, Choice choice) {
         this.playerId = playerId;
         this.choice = choice;
     }
@@ -20,7 +22,7 @@ public class ChoiceMessage {
         this.playerId = playerId;
     }
 
-    public String getChoice() {
+    public Choice getChoice() {
         return choice;
     }
 

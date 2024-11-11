@@ -1,9 +1,10 @@
+import { resultMessage } from './../app/models/resultMessage';
 
 import { Injectable } from '@angular/core';
 import { Client, IMessage } from '@stomp/stompjs'; // Assurez-vous d'importer Client et IMessage
 import * as SockJS from 'sockjs-client';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import {resultMessage} from "../app/models/resultMessage";
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class WebsocketService {
     // Activation de la connexion STOMP
     this.stompClient.activate();
     this.stompClient.onConnect = (frame) => {
-      console.log('Connected: peneeeeeeeeeeeeeeeeeeee' + frame);
+      console.log('Connected :' + frame);
       // S'abonner aux topics après la connexion
       this.stompClient.subscribe('/topic/results', (message: IMessage) => {
         console.log('Message reçu:', message.body);
@@ -50,8 +51,8 @@ export class WebsocketService {
       });
 
       this.stompClient.subscribe('/topic/result', (message: IMessage) => {
-        console.log("j ai recu le message de result : ",message.body);
-        // this.resultSubject.next(message.body); // Mettre à jour le nombre de rounds
+        const parsedMessage = JSON.parse(message.body);
+        this.resultSubject.next({"reponseJ1" : parsedMessage.reponseJ1,"reponseJ2":parsedMessage.reponseJ2,"scoreJ1":parsedMessage.scoreJ1,"scoreJ2":parsedMessage.scoreJ2});
       });
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
@@ -96,6 +97,10 @@ export class WebsocketService {
   getRoundObserver(): Observable<number> {
     return this.roundSubject.asObservable();
   }
+  getResultObserver(): Observable<resultMessage> {
+    return this.resultSubject.asObservable();
+  }
+
   getidObserver(): Observable<number> {
     return this.idSubject.asObservable();
   }

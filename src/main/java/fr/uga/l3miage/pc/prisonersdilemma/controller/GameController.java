@@ -27,7 +27,6 @@ public class GameController {
 
         //Le résultat est nul si on a aps encore recu les deux réponses
         if(result !=null){
-
             messagingTemplate.convertAndSend("/topic/result", result);
         }
     }

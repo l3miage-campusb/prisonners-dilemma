@@ -1,4 +1,4 @@
 export enum Choice {
-  Trahir = 'trahir',
-  Cooperer = 'cooperer'
+  Trahir = 'TRAHIR',
+  Cooperer = 'COOPERER'
 }

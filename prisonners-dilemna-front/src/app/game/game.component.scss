@@ -1,15 +1,90 @@
 .game-container {
-  text-align: center;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-button {
-  margin: 10px;
+span {
   font-size: 18px;
-  padding: 10px 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+  }
 }
 
 h2 {
   font-size: 24px;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 20px;
+}
+
+button {
+  width: 120px;
+  margin: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+
+  &:disabled {
+    background-color: #cccccc;
+  }
+}
+
+button.mat-raised-button.color-primary {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+button.mat-raised-button.color-warn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e53935;
+  }
+}
+
+div *ngIf {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 20px;
+  color: #4caf50;
+  margin-top: 20px;
 }
