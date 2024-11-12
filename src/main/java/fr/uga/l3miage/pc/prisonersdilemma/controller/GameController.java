@@ -2,6 +2,7 @@ package fr.uga.l3miage.pc.prisonersdilemma.controller;
 
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -30,6 +31,8 @@ public class GameController {
             messagingTemplate.convertAndSend("/topic/result", result);
         }
     }
+
+
 
 
     // Exemple de trait ement des choix

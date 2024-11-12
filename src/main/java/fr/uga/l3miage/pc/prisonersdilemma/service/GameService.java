@@ -1,14 +1,26 @@
 package fr.uga.l3miage.pc.prisonersdilemma.service;
 
 import fr.uga.l3miage.pc.Choice;
+import fr.uga.l3miage.pc.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class GameService {
+
     Choice choixJ1 = null;
     Choice choixJ2 = null;
+
+    IStrategy strategie ;
+    int leftPlayerId;
+
+    ArrayList<Tour> historique = new ArrayList<Tour>();
 
     int scorej1 = 0;
     int scoreJ2 = 0;
@@ -17,6 +29,11 @@ public class GameService {
     public ResultMessage processChoice(ChoiceMessage message) {
         // Logique pour traiter les choix des joueurs
         // Initialiser gameState selon les choix
+
+        if(strategie !=null){
+            leftPlayerId = Integer.parseInt(message.getPlayerId().equals("1")? "2" : "1");
+            return getResults(message.getChoice(), strategie.faireUnChoix(historique,leftPlayerId));
+        }
 
         if (message.getPlayerId().equals("1")){
             choixJ1 = message.getChoice();
@@ -64,8 +81,14 @@ public class GameService {
         }
         results.setScoreJ1(this.scorej1);
         results.setScoreJ2(this.scoreJ2);
+
+        historique.add(new Tour(choix1,choix2));
+
         return results;
 
     }
 
+    public void setStrategie(Strategy strategie) {
+        this.strategie = new StrategyAdaptatif();
+    }
 }
