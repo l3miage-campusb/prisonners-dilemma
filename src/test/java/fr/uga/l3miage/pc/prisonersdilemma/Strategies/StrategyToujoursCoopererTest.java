@@ -25,14 +25,32 @@ public class StrategyToujoursCoopererTest {
     void testtt(){
 
         StrategyToujoursCooperer strat = new StrategyToujoursCooperer();
-
         ArrayList<Tour> historique = new ArrayList<>(); // historial vacío
-        int joueurRemplace = 1; // índice del jugador, que no afecta el resultado
+        int joueurRemplace = 1; // índice del jugador, no afecta el resultado
 
         // Act
         Choice choix = strat.faireUnChoix(historique, joueurRemplace);
 
         // Assert
-        assertEquals(Choice.COOPERER, choix, "La estrategia debe devolver siempre COOPERER");
+        assertEquals(Choice.COOPERER, choix, "La estrategia debe devolver siempre COOPERER cuando el historial está vacío");
     }
+
+    @Test
+    void testFaireUnChoixToujoursCoopererConHistorialLleno() {
+        // Arrange
+        StrategyToujoursCooperer strat = new StrategyToujoursCooperer();
+        ArrayList<Tour> historique = new ArrayList<>();
+
+        // Agregar algunos datos al historial
+        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
+        historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
+        int joueurRemplace = 1;
+
+        // Act
+        Choice choix = strat.faireUnChoix(historique, joueurRemplace);
+
+        // Assert
+        assertEquals(Choice.COOPERER, choix, "La estrategia debe devolver siempre COOPERER incluso cuando el historial tiene jugadas");
+    }
+
 }
