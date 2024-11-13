@@ -1,12 +1,18 @@
 package fr.uga.l3miage.pc.prisonersdilemma.controller;
 
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
+import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class GameController {
+
+    private GameService gameService = new GameService();
 
     private final SimpMessagingTemplate messagingTemplate;
 
@@ -18,15 +24,17 @@ public class GameController {
     @MessageMapping("/choice") // Reçoit les messages envoyés à /app/choice
     public void handleChoice(ChoiceMessage message) {
         // Logique pour gérer le choix des joueurs
-        String result = processChoices(message);
+        ResultMessage result = gameService.processChoice(message);
 
-        // Envoyer le résultat à tous les clients abonnés au topic /topic/results
-        messagingTemplate.convertAndSend("/topic/results", result);
+        //Le résultat est nul si on a aps encore recu les deux réponses
+        if(result !=null){
+            messagingTemplate.convertAndSend("/topic/result", result);
+        }
     }
 
-    // Exemple de traitement des choix
-    private String processChoices(ChoiceMessage message) {
-        // Logique pour traiter les choix et retourner le résultat
-        return "Résultat pour le choix de " + message.getPlayerId() + ": " + message.getChoice();
-    }
+
+
+
+    // Exemple de trait ement des choix
+
 }

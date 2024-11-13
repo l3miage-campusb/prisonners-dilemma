@@ -1,0 +1,35 @@
+<div class="game-container">
+  <span>Rounds Remaining: {{ gameInfo.roundCount }} / {{ originalRoundCount }}</span>
+
+  <!-- Affichage des scores des joueurs -->
+  <div class="scores">
+    <p>Score Joueur 1 : {{ gameInfo.scoreJ1 }}</p>
+    <p>Score Joueur 2 : {{ gameInfo.scoreJ2 }}</p>
+  </div>
+
+  <!-- Choix de l'action par le joueur -->
+   <ng-container *ngIf="!isGameEnded()">
+     <h2>Make your choice:</h2>
+     <button [disabled]="choiceDone" mat-raised-button color="primary" (click)="cooperer()">Cooperer</button>
+     <button [disabled]="choiceDone" mat-raised-button color="warn" (click)="trahir()">Trahir</button>
+   </ng-container>
+
+  <!-- Affichage du choix du joueur -->
+  <div *ngIf="choiceDone">
+    <p>You have chosen to {{ playerChoice }}.</p>
+  </div>
+
+  <!-- Message de résultat affiché après la fin du round -->
+  <div *ngIf="gameInfo.resultat && choiceDone">
+    <h3>Result:</h3>
+    <p>{{ gameInfo.resultat }}</p>
+
+    <!-- Boutons de continuer ou arrêter -->
+     <ng-container *ngIf="choiceDone && !isGameEnded()">
+       <button mat-raised-button color="primary" (click)="continueGame()">Continuer</button>
+       <button mat-raised-button color="warn" (click)="stopGame()">Stop</button>
+     </ng-container>
+
+  </div>
+  <span *ngIf="isGameEnded()">Fin de la partie</span>
+</div>

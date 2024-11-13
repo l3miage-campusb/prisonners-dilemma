@@ -1,0 +1,24 @@
+<div class="container">
+  <!-- Affichage d'un message d'erreur si l'utilisateur n'est pas connecté -->
+  <div *ngIf="!isConnected" class="error-message">
+    <p>Non connecté au serveur</p>
+  </div>
+
+  <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
+  <div *ngIf="isConnected">
+    <span *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</span>
+    <span>Id du joueur : {{ id }}</span>
+    <button **ngIf="id==1" mat-raised-button color="primary" type="submit" class="playAloneButton">Jouer seul</button>
+
+    <div *ngIf="!isOtherPlayerConnected">
+      <p class="waiting-message">Waiting for other player...</p>
+    </div>
+    <form (ngSubmit)="sendRound()" *ngIf="isOtherPlayerConnected && id==1">
+      <mat-form-field appearance="fill" >
+        <mat-label>Number of Rounds</mat-label>
+        <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" >
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" >Send</button>
+    </form>
+  </div>
+</div>
