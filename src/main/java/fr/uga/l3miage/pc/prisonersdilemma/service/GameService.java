@@ -3,10 +3,12 @@ package fr.uga.l3miage.pc.prisonersdilemma.service;
 import fr.uga.l3miage.pc.Choice;
 import fr.uga.l3miage.pc.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyDonnantDonnant;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,11 +16,13 @@ import java.util.ArrayList;
 @Service
 public class GameService {
 
+    private static GameService instance;
+
     Choice choixJ1 = null;
     Choice choixJ2 = null;
 
     IStrategy strategie ;
-    int leftPlayerId;
+    int leftPlayerId = -1;
 
     ArrayList<Tour> historique = new ArrayList<Tour>();
 
@@ -26,12 +30,19 @@ public class GameService {
     int scoreJ2 = 0;
 
 
-    public ResultMessage processChoice(ChoiceMessage message) {
-        // Logique pour traiter les choix des joueurs
-        // Initialiser gameState selon les choix
+    public static GameService getInstance() {
+        if(instance == null) {
+            instance = new GameService();
+        }
+        return instance;
+    }
 
-        if(strategie !=null){
-            leftPlayerId = Integer.parseInt(message.getPlayerId().equals("1")? "2" : "1");
+    public ResultMessage processChoice(ChoiceMessage message) {
+
+        // Logique pour traiter les choix des joueurs
+
+
+        if(this.leftPlayerId != -1){
             return getResults(message.getChoice(), strategie.faireUnChoix(historique,leftPlayerId));
         }
 
@@ -88,7 +99,18 @@ public class GameService {
 
     }
 
-    public void setStrategie(Strategy strategie) {
-        this.strategie = new StrategyAdaptatif();
+    public ResultMessage handleLeave(LeaveMessage message){
+        this.strategie = new StrategyDonnantDonnant();
+
+        this.leftPlayerId = message.getPlayerId();
+
+        if(this.leftPlayerId == 1 && this.choixJ2 != null){
+            return getResults(choixJ2, strategie.faireUnChoix(historique,leftPlayerId));
+        }
+        else if(this.leftPlayerId == 2 && this.choixJ1 != null){
+            return getResults(choixJ1, strategie.faireUnChoix(historique,leftPlayerId));
+        }
+        return null;
+
     }
 }

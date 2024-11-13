@@ -1,9 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { WebsocketService } from '../../services/websocket.service';  // Assurez-vous que le chemin est correct
-import { Router } from '@angular/router'; // Import du Router pour la navigation si nécessaire
+
+import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../../services/websocket.service';
+
 import { ChoiceMessage } from '../models/choiceMessage';
+import { LeaveMessage } from '../models/leaveMessage';
 import { Choice } from '../enums/choice.enum';
 import { gameInfo } from '../models/gameInfo';
+import { MatDialog } from '@angular/material/dialog';
+import { StrategyDialogComponent } from './strategy-dialog/strategy-dialog.component';
+import { Strategy } from '../enums/startegy.enum';
 
 @Component({
   selector: 'app-game',
@@ -17,7 +22,7 @@ export class GameComponent implements OnInit {
   gameInfo : gameInfo = {"roundCount" : 0, "scoreJ1" : 0, "scoreJ2" : 0,"resultat" : "" };
   originalRoundCount : number = 0;
 
-  constructor(private websocketService: WebsocketService) {
+  constructor(private websocketService: WebsocketService, public dialog: MatDialog) {
     this.gameInfo.roundCount = this.websocketService.roundCount;
     this.originalRoundCount = this.websocketService.roundCount;
   }
@@ -51,8 +56,8 @@ export class GameComponent implements OnInit {
   }
 
   // Fonction pour envoyer le choix au serveur
-   // Fonction pour envoyer le choix
    sendChoice() {
+    this.gameInfo.roundCount --;
     const message: ChoiceMessage = {
       playerId: this.websocketService.id,
       choice: this.playerChoice
@@ -62,12 +67,24 @@ export class GameComponent implements OnInit {
 
   continueGame(){
     this.choiceDone = false;
-    this.gameInfo.roundCount --;
     this.gameInfo.resultat = "";
   }
 
-  stopGame(){
+  stopGame() {
+    const dialogRef = this.dialog.open(StrategyDialogComponent);
 
+    dialogRef.afterClosed().subscribe((result : Strategy) => {
+      if (result) {
+        const message: LeaveMessage = {
+          playerId: this.websocketService.id,
+          Strategy: result
+        }
+
+        this.websocketService.sendMessage('/app/leave',JSON.stringify(message));
+        this.websocketService.disconnect();
+
+      }
+    });
   }
 
   isGameEnded(){

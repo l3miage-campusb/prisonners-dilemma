@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class GameController {
 
-    private GameService gameService = new GameService();
+    private final GameService gameService = GameService.getInstance();
 
     private final SimpMessagingTemplate messagingTemplate;
 
