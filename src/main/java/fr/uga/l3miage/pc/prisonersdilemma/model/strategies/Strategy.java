@@ -17,7 +17,7 @@ public enum Strategy {
     PAVLOV,                     //fait et teste
     PAVLOV_ALEATOIRE,           //fait,teste
     ADAPTATIF,                  //fait,teste
-    GRADUEL,
+    GRADUEL,                    //fait
     DONNANT_DONNANT_SUPCONNEUX,         //fait,teste
-    RANCUNIER_DOUX
+    RANCUNIER_DOUX                      //fait,teste1/2
 }
