@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { WebsocketService } from '../../services/websocket.service'; // Assurez-vous que le chemin est correct
+import { WebsocketService } from '../../services/websocket.service'; 
 
 @Component({
   selector: 'app-accueil',

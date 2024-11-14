@@ -8,11 +8,14 @@
   </div>
 
   <!-- Choix de l'action par le joueur -->
-   <ng-container *ngIf="!isGameEnded()">
-     <h2>Make your choice:</h2>
-     <button [disabled]="choiceDone" mat-raised-button color="primary" (click)="cooperer()">Cooperer</button>
-     <button [disabled]="choiceDone" mat-raised-button color="warn" (click)="trahir()">Trahir</button>
-   </ng-container>
+  <ng-container *ngIf="!isGameEnded()">
+    <h2>Make your choice:</h2>
+    <div class="choiceButtons">
+      <button [disabled]="choiceDone" mat-raised-button color="primary" (click)="cooperer()">Cooperer</button>
+      <button [disabled]="choiceDone" mat-raised-button color="warn" (click)="trahir()">Trahir</button>
+    </div>
+    <button mat-raised-button color="warn" (click)="stopGame()" class="leaveButton">Stop</button>
+  </ng-container>
 
   <!-- Affichage du choix du joueur -->
   <div *ngIf="choiceDone">
@@ -25,10 +28,10 @@
     <p>{{ gameInfo.resultat }}</p>
 
     <!-- Boutons de continuer ou arrêter -->
-     <ng-container *ngIf="choiceDone && !isGameEnded()">
-       <button mat-raised-button color="primary" (click)="continueGame()">Continuer</button>
-       <button mat-raised-button color="warn" (click)="stopGame()">Stop</button>
-     </ng-container>
+    <ng-container *ngIf="choiceDone && !isGameEnded()">
+      <button mat-raised-button color="primary" (click)="continueGame()">Continuer</button>
+
+    </ng-container>
 
   </div>
   <span *ngIf="isGameEnded()">Fin de la partie</span>

@@ -4,7 +4,7 @@ public enum Strategy {
 
     DONNANT_DONNANT,                //fait
     DONNANT_DONNANT_ALEATOIRE,      //fait
-    DONANNT_POUR_DEUX_DONNANTS_ALEATOIRE,               //fait
+    DONNANT_POUR_DEUX_DONNANTS_ALEATOIRE,               //fait
     DONNANT_POUR_DEUX_DONNANTS,         //fait
     SONDEUR_NAIF,               //fait
     SONDEUR_REPENTANT,
