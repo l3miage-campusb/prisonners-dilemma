@@ -36,7 +36,6 @@ public class StrategyRancunierDoux implements IStrategy {
         } else if (phaseCastigo > 6) {
             // Reiniciar después del ciclo de castigo
             phaseCastigo = 0;
-            ultimaTraicionAdversario= historique.size();
         }
 
         // Cooperar si no hay un ciclo de castigo activo

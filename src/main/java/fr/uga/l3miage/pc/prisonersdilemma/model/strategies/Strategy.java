@@ -18,6 +18,6 @@ public enum Strategy {
     PAVLOV_ALEATOIRE,           //fait,teste
     ADAPTATIF,                  //fait,teste
     GRADUEL,
-    DONNANT_DONNANT_SUPCONNEUX,         //fait
+    DONNANT_DONNANT_SUPCONNEUX,         //fait,teste
     RANCUNIER_DOUX
 }
