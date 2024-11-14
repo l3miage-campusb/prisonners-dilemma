@@ -104,6 +104,43 @@ class StrategySondeurRepentantTest {
     }
 
     @Test
+    void testFaireUnChoixSondeurRepentantApresTrahisonJ2() {
+        // Préparer
+        StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        ArrayList<Tour> historique = new ArrayList<>();
+
+        // Ajouter un tour où l'adversaire a trahi
+        historique.add(new Tour(Choice.TRAHIR, Choice.TRAHIR));
+        int joueurRemplace = 2;
+
+        // Agir
+        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
+
+        // Vérifier
+        assertEquals(Choice.COOPERER, choix, "La stratégie doit choisir COOPERER pour se montrer repentante après une trahison de l'adversaire");
+        assertNotNull(choix, "Le choix ne doit pas être null");
+    }
+
+    @Test
+    void testFaireUnChoixSondeurRepentantApresTrahisonJ2nonTrahison() {
+        // Préparer
+        StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        ArrayList<Tour> historique = new ArrayList<>();
+
+        // Ajouter un tour où l'adversaire a trahi
+        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
+        int joueurRemplace = 2;
+
+        // Agir
+        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
+
+        // Vérifier
+        assertEquals(Choice.COOPERER, choix, "La stratégie doit choisir COOPERER pour se montrer repentante après une trahison de l'adversaire");
+        assertNotNull(choix, "Le choix ne doit pas être null");
+    }
+
+
+    @Test
     void testFaireUnChoixSondeurRepentantAvecProbabiliteTrahison() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
