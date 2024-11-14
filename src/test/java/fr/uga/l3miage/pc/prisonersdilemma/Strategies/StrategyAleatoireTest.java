@@ -21,7 +21,7 @@ public class StrategyAleatoireTest {
 
         // Vérification : Le résultat doit être COOPERER ou TRAHIR
         assertTrue(choix == Choice.COOPERER || choix == Choice.TRAHIR,
-                "Le résultat doit être COOPERER ou TRAHIR");
+                "Le résultat doitt être COOPERER ou TRAHIR");
     }
 
     @Test
