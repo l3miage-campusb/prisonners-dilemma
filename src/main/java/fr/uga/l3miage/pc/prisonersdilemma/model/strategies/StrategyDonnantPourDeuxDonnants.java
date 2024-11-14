@@ -34,8 +34,6 @@ public class StrategyDonnantPourDeuxDonnants implements IStrategy{
 
         Tour avantDernierTour = historique.get(historique.size()-2);
         Tour dernierTour = historique.get(historique.size()-1);
-        System.out.println("AVANT DERNIER TOUR J2: " + avantDernierTour.getChoixJoueur2());
-        System.out.println("DERNIER TOUR J2: " + dernierTour.getChoixJoueur2());
 
         boolean coupsEgaux;
 

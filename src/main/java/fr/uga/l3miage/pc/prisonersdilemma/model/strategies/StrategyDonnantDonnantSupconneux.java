@@ -15,7 +15,7 @@ public class StrategyDonnantDonnantSupconneux implements IStrategy{
         }
 
         Tour dernierTour = historique.get(historique.size()-1);
-        if(joueurRemplace==1){;
+        if(joueurRemplace==1){
             return dernierTour.getChoixJoueur2();
         }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class StrategyDonnantDonnantAleatoire implements IStrategy{
     private final SecureRandom secureRandom = new SecureRandom();
-    private final static double PROBABILITEALEATOIRE = 0.05; // 20% de probabilité de jouer aléatoirement
+    private static final double PROBABILITEALEATOIRE = 0.05; // 20% de probabilité de jouer aléatoirement
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
