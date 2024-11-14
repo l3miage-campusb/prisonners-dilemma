@@ -44,7 +44,7 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
     }
 
     @Test
-    void testFaireUnChoixAvecHistoriqueAvecCoupOpposes() {
+    void testFaireUnChoixAvecHistoriqueNonRepete() {
         // Préparer
         StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
         ArrayList<Tour> historique = new ArrayList<>();
@@ -59,27 +59,27 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
         Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
 
         // Vérifier
-        assertEquals(Choice.TRAHIR, choix, "Le joueur 1 doit trahir car le dernier coup de l'adversaire était TRAHIR");
+        assertEquals(Choice.TRAHIR, choix, "Le joueur 1 doit cooperer car le joeuur n a pas fait le meme choix deux fois de suite");
     }
 
-//    @Test
-//    void testFaireUnChoixAvecHistoriqueAvecCoupInverse() {
-//        // Préparer
-//        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
-//        ArrayList<Tour> historique = new ArrayList<>();
-//
-//        // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés
-//        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
-//        historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
-//
-//        int joueurRemplace = 2; // Le joueur 2 est remplacé
-//
-//        // Agir
-//        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
-//
-//        // Vérifier
-//        assertEquals(Choice.COOPERER, choix, "Le joueur 2 doit coopérer car le dernier coup de l'adversaire était COOPERER");
-//    }
+    @Test
+    void testFaireUnChoixAvecHistoriqueAvecCoupInverse() {
+        // Préparer
+        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+        ArrayList<Tour> historique = new ArrayList<>();
+
+        // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés
+        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
+        historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
+
+        int joueurRemplace = 2; // Le joueur 2 est remplacé
+
+        // Agir
+        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
+
+        // Vérifier
+        assertEquals(Choice.COOPERER, choix, "Le joueur 2 doit coopérer car le dernier coup de l'adversaire était COOPERER");
+    }
 
 //    @Test
 //    void testCoupsEgauxAvecCoupIdentiques() {

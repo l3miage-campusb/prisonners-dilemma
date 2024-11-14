@@ -14,10 +14,11 @@ public class LeaveController {
 
     private final SimpMessagingTemplate messagingTemplate;
 
-    private final GameService gameService = GameService.getInstance();
+    private final GameService gameService;
 
-    public LeaveController(SimpMessagingTemplate messagingTemplate) {
+    public LeaveController(SimpMessagingTemplate messagingTemplate, GameService gameService) {
         this.messagingTemplate = messagingTemplate;
+        this.gameService = gameService;
     }
 
 

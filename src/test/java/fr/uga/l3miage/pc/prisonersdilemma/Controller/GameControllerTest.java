@@ -30,17 +30,18 @@ class GameControllerTest {
 
 
 
-//    @Test
-//    void testHandleChoice_withSimplifiedMock() {
-//        // Utilisation de matchers pour tous les arguments
-//        when(gameService.processChoice(any(ChoiceMessage.class))).thenReturn(new ResultMessage());
-//
-//        // Exécution du test
-//        gameController.handleChoice(new ChoiceMessage("2", Choice.COOPERER));
-//
-//        // Vérification de l'interaction
-//        verify(messagingTemplate, times(1)).convertAndSend(eq("/topic/result"), any(ResultMessage.class));
-//    }
+    @Test
+    void testHandleChoice_withSimplifiedMock() {
+        // Utilisation de matchers pour tous les arguments
+
+        when(gameService.processChoice(any(ChoiceMessage.class))).thenReturn(new ResultMessage());
+
+        // Exécution du test
+        gameController.handleChoice(new ChoiceMessage("2", Choice.COOPERER));
+
+        // Vérification de l'interaction
+        verify(messagingTemplate, times(1)).convertAndSend(eq("/topic/result"), any(ResultMessage.class));
+    }
 
 
     @Test

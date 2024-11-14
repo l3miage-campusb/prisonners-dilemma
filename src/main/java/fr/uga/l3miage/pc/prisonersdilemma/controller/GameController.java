@@ -12,12 +12,13 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class GameController {
 
-    private final GameService gameService = GameService.getInstance();
+    private final GameService gameService;
 
     private final SimpMessagingTemplate messagingTemplate;
 
-    public GameController(SimpMessagingTemplate messagingTemplate) {
+    public GameController(SimpMessagingTemplate messagingTemplate, GameService gameService) {
         this.messagingTemplate = messagingTemplate;
+        this.gameService = gameService;
     }
 
     // Méthode pour gérer les choix des joueurs

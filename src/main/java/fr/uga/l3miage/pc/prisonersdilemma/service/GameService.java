@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @Service
 public class GameService {
 
-    private static GameService instance;
+    private static final GameService instance = new GameService();
 
     Choice choixJ1 = null;
     Choice choixJ2 = null;
@@ -28,9 +28,6 @@ public class GameService {
 
 
     public static GameService getInstance() {
-        if(instance == null) {
-            instance = new GameService();
-        }
         return instance;
     }
 
