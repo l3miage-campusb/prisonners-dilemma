@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
 
-public class StrategyDonnantDonnantTest {
+class StrategyDonnantDonnantTest {
 
     @Test
     void testFaireUnChoixDonnantDonnantAvecHistoriqueVide() {

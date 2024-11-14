@@ -2,10 +2,10 @@ package fr.uga.l3miage.pc.prisonersdilemma.controller;
 
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
+
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
@@ -25,7 +25,6 @@ public class GameController {
     public void handleChoice(ChoiceMessage message) {
         // Logique pour gérer le choix des joueurs
         ResultMessage result = gameService.processChoice(message);
-        System.out.println("result vaut : "+result);
         //Le résultat est nul si on a aps encore recu les deux réponses
         if(result !=null){
             messagingTemplate.convertAndSend("/topic/result", result);

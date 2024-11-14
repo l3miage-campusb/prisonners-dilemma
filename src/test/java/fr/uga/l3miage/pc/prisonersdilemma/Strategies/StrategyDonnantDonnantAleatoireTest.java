@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-public class StrategyDonnantDonnantAleatoireTest {
+class StrategyDonnantDonnantAleatoireTest {
 
     @Test
     void testFaireUnChoixAvecHistoriqueVide() {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StrategyRancunierTest {
+class StrategyRancunierTest {
 
     @Test
     void testFaireUnChoixAvecHistoriqueVide() {

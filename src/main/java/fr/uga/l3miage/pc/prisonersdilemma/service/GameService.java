@@ -21,7 +21,7 @@ public class GameService {
     IStrategy strategie ;
     int leftPlayerId = -1;
 
-    ArrayList<Tour> historique = new ArrayList<Tour>();
+    ArrayList<Tour> historique = new ArrayList<>();
 
     int scorej1 = 0;
     int scoreJ2 = 0;

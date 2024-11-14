@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
-public class StrategyToujoursCoopererTest {
+class StrategyToujoursCoopererTest {
 
     @Test
     void testFaireUnChoixToujoursCoopererConHistorialVacio() {

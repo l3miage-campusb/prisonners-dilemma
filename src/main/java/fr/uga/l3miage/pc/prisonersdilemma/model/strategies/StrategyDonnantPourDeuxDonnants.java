@@ -9,11 +9,11 @@ public class StrategyDonnantPourDeuxDonnants implements IStrategy{
 
     public boolean coupsEgaux(int joueur, Tour tour1, Tour tour2){
         if(joueur==1){
-            return tour1.choixJoueur1==tour2.choixJoueur1;
+            return tour1.getChoixJoueur1()==tour2.getChoixJoueur1();
         }
         else{
 
-            return tour1.choixJoueur2==tour2.choixJoueur2;
+            return tour1.getChoixJoueur2()==tour2.getChoixJoueur2();
         }
     }
 
@@ -39,12 +39,12 @@ public class StrategyDonnantPourDeuxDonnants implements IStrategy{
 
         if(joueurRemplace==1){
             coupsEgaux=coupsEgaux(2,avantDernierTour,dernierTour);
-            return coupsEgaux ?  dernierTour.choixJoueur2 : inverse(dernierTour.choixJoueur2);     //On suppose que on doit envoyer le meme EXCLUSIVEMENT s'il y a deux coups pareils d'affilee
+            return coupsEgaux ?  dernierTour.getChoixJoueur2() : inverse(dernierTour.getChoixJoueur2());     //On suppose que on doit envoyer le meme EXCLUSIVEMENT s'il y a deux coups pareils d'affilee
         }
 
         else{
             coupsEgaux=coupsEgaux(1,avantDernierTour,dernierTour);
-            return coupsEgaux ? dernierTour.choixJoueur1 : inverse(dernierTour.choixJoueur1);
+            return coupsEgaux ? dernierTour.getChoixJoueur1() : inverse(dernierTour.getChoixJoueur1());
         }
 
     }

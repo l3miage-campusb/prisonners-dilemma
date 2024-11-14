@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
-public class StrategyVraiPacificateurTest {
+class StrategyVraiPacificateurTest {
 
     @Test
     void testFaireUnChoixConHistorialMenorDeDos() {
@@ -25,7 +25,7 @@ public class StrategyVraiPacificateurTest {
         choix = strat.faireUnChoix(historique, 1);
 
         // Validación: La estrategia debe cooperar
-        assertEquals(Choice.COOPERER, choix, "Con solo un turno en el historial, la estrategia debe cooperar");
+        assertEquals(Choice.COOPERER, choix, "Conn solo un turno en el historial, la estrategia debe cooperar");
     }
 
     @Test

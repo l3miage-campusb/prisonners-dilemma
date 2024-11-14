@@ -14,11 +14,11 @@ public class StrategyGraduel implements IStrategy {
         int trahisonsJoueur = 0;
 
         for (Tour tour : historique) {
-            Choice choixAdversaire = (joueurRemplace == 1) ? tour.choixJoueur2 : tour.choixJoueur1;
+            Choice choixAdversaire = (joueurRemplace == 1) ? tour.getChoixJoueur2() : tour.getChoixJoueur1();
             if (choixAdversaire == Choice.TRAHIR) {
                 trahisonsAdversaire++;
             }
-            if ((joueurRemplace == 1 && tour.choixJoueur1 == Choice.TRAHIR) || (joueurRemplace == 2 && tour.choixJoueur2 == Choice.TRAHIR)) {
+            if ((joueurRemplace == 1 && tour.getChoixJoueur1() == Choice.TRAHIR) || (joueurRemplace == 2 && tour.getChoixJoueur2() == Choice.TRAHIR)) {
                 trahisonsJoueur++;
             }
         }

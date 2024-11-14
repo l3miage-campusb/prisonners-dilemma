@@ -9,12 +9,12 @@ import java.util.ArrayList;
 public class StrategySondeurRepentant implements IStrategy {
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final double probabiliteTrahison = 0.2; // Probabilité de trahir même après la coopération de l'adversaire
+    private final static double probabiliteTrahison = 0.2; // Probabilité de trahir même après la coopération de l'adversaire
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
 
-        if(historique.size() < 1){
+        if(historique.isEmpty()){
             return Choice.COOPERER; // Coopérer au premier tour
         }
 
@@ -22,8 +22,8 @@ public class StrategySondeurRepentant implements IStrategy {
         Tour dernierTour = historique.get(historique.size() - 1);
 
         // Si l'adversaire a trahi dans le dernier tour, on choisit de coopérer (en se montrant repentant)
-        if((joueurRemplace == 1 && dernierTour.choixJoueur2 == Choice.TRAHIR) ||
-                (joueurRemplace == 2 && dernierTour.choixJoueur1 == Choice.TRAHIR)) {
+        if((joueurRemplace == 1 && dernierTour.getChoixJoueur2() == Choice.TRAHIR) ||
+                (joueurRemplace == 2 && dernierTour.getChoixJoueur1() == Choice.TRAHIR)) {
             return Choice.COOPERER;
         }
 
@@ -34,9 +34,9 @@ public class StrategySondeurRepentant implements IStrategy {
 
         // Sinon, jouer comme le dernier coup de l'adversaire
         if(joueurRemplace == 1) {
-            return dernierTour.choixJoueur2; // Imiter le dernier coup de l'adversaire (joueur 2)
+            return dernierTour.getChoixJoueur2(); // Imiter le dernier coup de l'adversaire (joueur 2)
         } else {
-            return dernierTour.choixJoueur1; // Imiter le dernier coup de l'adversaire (joueur 1)
+            return dernierTour.getChoixJoueur1(); // Imiter le dernier coup de l'adversaire (joueur 1)
         }
     }
 }
