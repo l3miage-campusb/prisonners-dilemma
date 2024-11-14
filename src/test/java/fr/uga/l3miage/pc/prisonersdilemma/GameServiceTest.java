@@ -2,11 +2,13 @@ package fr.uga.l3miage.pc.prisonersdilemma;
 
 import fr.uga.l3miage.pc.Choice;
 import fr.uga.l3miage.pc.Tour;
+import fr.uga.l3miage.pc.prisonersdilemma.controller.GameController;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAleatoire;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyToujoursCooperer;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -26,6 +28,11 @@ public class GameServiceTest {
 
     }
 
+    @BeforeEach
+    void setUp() {
+        this.resetGameService(gameService);
+    }
+
     GameService gameService = new GameService();
     @Test
     void testProcessChoiceTrahirTrahir() {
@@ -43,7 +50,6 @@ public class GameServiceTest {
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
 
-        this.resetGameService(gameService);
 
     }
     @Test
@@ -62,7 +68,6 @@ public class GameServiceTest {
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
 
-        this.resetGameService(gameService);
 
     }
     @Test
@@ -81,7 +86,6 @@ public class GameServiceTest {
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
 
-        this.resetGameService(gameService);
 
     }
     @Test
@@ -100,7 +104,6 @@ public class GameServiceTest {
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
 
-        this.resetGameService(gameService);
 
     }
 
@@ -120,7 +123,6 @@ public class GameServiceTest {
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
 
-        this.resetGameService(gameService);
 
     }
 
