@@ -7,7 +7,7 @@ public enum Strategy {
     DONNANT_POUR_DEUX_DONNANTS_ALEATOIRE,               //fait
     DONNANT_POUR_DEUX_DONNANTS,         //fait
     SONDEUR_NAIF,               //fait,teste
-    SONDEUR_REPENTANT,
+    SONDEUR_REPENTANT,          //fait
     PACIFICATEUR_NAIF,              //fait
     VRAI_PACIFICATEUR,              //fait,teste
     ALEATOIRE,                  //fait,teste

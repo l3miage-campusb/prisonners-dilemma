@@ -5,10 +5,7 @@ import fr.uga.l3miage.pc.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyDonnantDonnant;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -100,7 +97,8 @@ public class GameService {
     }
 
     public ResultMessage handleLeave(LeaveMessage message){
-        this.strategie = new StrategyDonnantDonnant();
+
+        this.strategie = StrategyFactory.createStrategy(message.getStrategy());
 
         this.leftPlayerId = message.getPlayerId();
 
