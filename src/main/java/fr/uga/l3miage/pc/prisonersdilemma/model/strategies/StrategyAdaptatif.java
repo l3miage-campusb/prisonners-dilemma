@@ -41,6 +41,8 @@ public class StrategyAdaptatif implements IStrategy {
         double scoreMoyenCooperation = (countCooperation > 0) ? scoreTotalCooperation / countCooperation : 0;
         double scoreMoyenTrahison = (countTrahison > 0) ? scoreTotalTrahison / countTrahison : 0;
 
+        System.out.println("scoreMoyenCooperation : " + scoreMoyenCooperation);
+        System.out.println("scoreMoyenTrahison : " + scoreMoyenTrahison);
         return (scoreMoyenCooperation >= scoreMoyenTrahison) ? Choice.COOPERER : Choice.TRAHIR;
     }
 
