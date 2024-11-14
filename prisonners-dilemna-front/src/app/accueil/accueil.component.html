@@ -8,7 +8,6 @@
   <div *ngIf="isConnected">
     <span *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</span>
     <span>Id du joueur : {{ id }}</span>
-    <button **ngIf="id==1" mat-raised-button color="primary" type="submit" class="playAloneButton">Jouer seul</button>
 
     <div *ngIf="!isOtherPlayerConnected">
       <p class="waiting-message">Waiting for other player...</p>
