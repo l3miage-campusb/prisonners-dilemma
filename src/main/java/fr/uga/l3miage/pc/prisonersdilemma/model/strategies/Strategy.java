@@ -6,13 +6,13 @@ public enum Strategy {
     DONNANT_DONNANT_ALEATOIRE,      //fait
     DONNANT_POUR_DEUX_DONNANTS_ALEATOIRE,               //fait
     DONNANT_POUR_DEUX_DONNANTS,         //fait
-    SONDEUR_NAIF,               //fait
+    SONDEUR_NAIF,               //fait,teste
     SONDEUR_REPENTANT,
     PACIFICATEUR_NAIF,              //fait
-    VRAI_PACIFICATEUR,              //fait
-    ALEATOIRE,                  //fait
-    TOUJOURS_TRAHIR,                //fait
-    TOUJOURS_COOPERER,          //fait
+    VRAI_PACIFICATEUR,              //fait,teste
+    ALEATOIRE,                  //fait,teste
+    TOUJOURS_TRAHIR,                //fait,teste
+    TOUJOURS_COOPERER,          //fait,teste
     RANCUNIER,                  //fait
     PAVLOV,                     //fait
     PAVLOV_ALEATOIRE,           //fait
