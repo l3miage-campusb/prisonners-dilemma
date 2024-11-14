@@ -6,27 +6,11 @@ import fr.uga.l3miage.pc.Tour;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public class StrategyDonnantPourDeuxDonnantsAleatoire implements IStrategy{
+public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPourDeuxDonnants{
 
     private final SecureRandom secureRandom = new SecureRandom();
     private final double probabiliteAleatoire = 0.2; //
 
-
-    public boolean coupsEgaux(int joueur, Tour tour1, Tour tour2){
-        if(joueur==1){
-            return tour1.choixJoueur1==tour2.choixJoueur1;
-        }
-        else{
-            return tour1.choixJoueur2==tour2.choixJoueur2;
-        }
-
-    }
-
-
-    public Choice inverse(Choice choice){
-        if(choice==Choice.COOPERER) return Choice.TRAHIR;
-        return Choice.COOPERER;
-    }
 
 
     @Override

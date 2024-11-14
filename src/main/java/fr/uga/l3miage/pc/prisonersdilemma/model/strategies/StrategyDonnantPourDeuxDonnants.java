@@ -15,8 +15,6 @@ public class StrategyDonnantPourDeuxDonnants implements IStrategy{
 
             return tour1.choixJoueur2==tour2.choixJoueur2;
         }
-
-
     }
 
 
