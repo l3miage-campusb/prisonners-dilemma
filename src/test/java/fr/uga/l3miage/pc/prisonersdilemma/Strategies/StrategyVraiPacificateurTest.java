@@ -25,7 +25,7 @@ class StrategyVraiPacificateurTest {
         choix = strat.faireUnChoix(historique, 1);
 
         // Validación: La estrategia debe cooperar
-        assertEquals(Choice.COOPERER, choix, "Con solo un turno en el historial, la estrategia debe cooperar");
+        assertEquals(Choice.COOPERER, choix, "Conn solo un turno en el historial, la estrategia debe cooperar");
     }
 
     @Test
