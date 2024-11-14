@@ -17,3 +17,7 @@ Si vous rencontrez des erreurs, possiblement car trop anciene version de java, u
 Pusi lancer le front (à retrouvez dans le dossier prisonners-dilemna-front) : 
 
 ng serve
+
+PS:
+
+Du à la présence d'aléatoire, il se peut parfois que certains tests ne passent pas.
