@@ -13,8 +13,8 @@ public enum Strategy {
     ALEATOIRE,                  //fait,teste
     TOUJOURS_TRAHIR,                //fait,teste
     TOUJOURS_COOPERER,          //fait,teste
-    RANCUNIER,                  //fait
-    PAVLOV,                     //fait
+    RANCUNIER,                  //fait et teste
+    PAVLOV,                     //fait et teste
     PAVLOV_ALEATOIRE,           //fait
     ADAPTATIF,
     GRADUEL,

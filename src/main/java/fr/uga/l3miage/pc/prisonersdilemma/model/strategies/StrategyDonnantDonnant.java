@@ -10,7 +10,7 @@ public class StrategyDonnantDonnant implements IStrategy{
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
         //Si on a pas d'historique de tou,r on revoit le choix de cooperer par defaut
-        if(historique.size() == 0 || historique.size() == 1){
+        if(historique.size() < 2){
             return Choice.COOPERER;
         }
 
@@ -19,13 +19,8 @@ public class StrategyDonnantDonnant implements IStrategy{
             return dernierTour.choixJoueur2;
         }
 
-        if(joueurRemplace==2){
+        else{
             return dernierTour.choixJoueur1;
         }
-
-        return null;  //garanti qu'on passe pas par la car c'est le serveur qui envoit soit
-        //1 soit 2
     }
-
-
 }

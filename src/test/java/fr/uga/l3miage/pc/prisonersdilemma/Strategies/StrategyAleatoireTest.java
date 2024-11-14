@@ -13,34 +13,34 @@ import java.util.Set;
 public class StrategyAleatoireTest {
 
     @Test
-    void testFaireUnChoixConHistorialVacio() {
-        // Prueba con historial vacío
-        StrategyAleatoire strat = new StrategyAleatoire();
+    void testFaireUnChoixAvecHistoriqueVide() {
+        // Test avec historique vide
+        StrategyAleatoire strategie = new StrategyAleatoire();
         ArrayList<Tour> historique = new ArrayList<>();
-        Choice choix = strat.faireUnChoix(historique, 1);
+        Choice choix = strategie.faireUnChoix(historique, 1);
 
-        // Validación: El resultado debe ser COOPERER o TRAHIR
+        // Vérification : Le résultat doit être COOPERER ou TRAHIR
         assertTrue(choix == Choice.COOPERER || choix == Choice.TRAHIR,
-                "El resultado debe ser COOPERER o TRAHIR");
+                "Le résultat doit être COOPERER ou TRAHIR");
     }
 
     @Test
-    void testFaireUnChoixAleatorioDistribucion() {
-        // Prueba para verificar que tanto COOPERER como TRAHIR son posibles
-        StrategyAleatoire strat = new StrategyAleatoire();
+    void testFaireUnChoixAleatoireDistribution() {
+        // Test pour vérifier que tant COOPERER que TRAHIR sont possibles
+        StrategyAleatoire strategie = new StrategyAleatoire();
         ArrayList<Tour> historique = new ArrayList<>();
-        Set<Choice> resultados = new HashSet<>();
+        Set<Choice> resultats = new HashSet<>();
 
-        // Ejecutar el método varias veces para observar diferentes resultados
+        // Exécution de la méthode plusieurs fois pour observer différents résultats
         for (int i = 0; i < 100; i++) {
-            resultados.add(strat.faireUnChoix(historique, 1));
-            if (resultados.contains(Choice.COOPERER) && resultados.contains(Choice.TRAHIR)) {
+            resultats.add(strategie.faireUnChoix(historique, 1));
+            if (resultats.contains(Choice.COOPERER) && resultats.contains(Choice.TRAHIR)) {
                 break;
             }
         }
 
-        // Validación: Ambos resultados deben aparecer en múltiples ejecuciones
-        assertTrue(resultados.contains(Choice.COOPERER), "La estrategia debería a veces cooperar");
-        assertTrue(resultados.contains(Choice.TRAHIR), "La estrategia debería a veces traicionar");
+        // Vérification : Les deux résultats doivent apparaître dans plusieurs exécutions
+        assertTrue(resultats.contains(Choice.COOPERER), "La stratégie devrait parfois coopérer");
+        assertTrue(resultats.contains(Choice.TRAHIR), "La stratégie devrait parfois trahir");
     }
 }

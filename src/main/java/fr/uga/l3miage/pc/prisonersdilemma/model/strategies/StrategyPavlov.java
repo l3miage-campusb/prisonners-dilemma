@@ -36,7 +36,7 @@ public class StrategyPavlov implements IStrategy{
             }
         }
 
-        if(joueurRemplace==2){
+        else{
             if(dernierTour.choixJoueur2==Choice.TRAHIR && dernierTour.choixJoueur1==Choice.COOPERER){
                 return Choice.TRAHIR;
             }
@@ -46,8 +46,6 @@ public class StrategyPavlov implements IStrategy{
                 return inverse(dernierTour.choixJoueur2);
             }
         }
-
-        return null;
     }
 
 
