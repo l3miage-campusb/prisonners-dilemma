@@ -1,11 +1,10 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Controller;
 
-import fr.uga.l3miage.pc.Choice;
+import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.controller.GameController;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

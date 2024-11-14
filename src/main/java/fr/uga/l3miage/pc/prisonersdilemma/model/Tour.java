@@ -1,4 +1,4 @@
-package fr.uga.l3miage.pc;
+package fr.uga.l3miage.pc.prisonersdilemma.model;
 
 public class Tour {
     static int compteur = 0;

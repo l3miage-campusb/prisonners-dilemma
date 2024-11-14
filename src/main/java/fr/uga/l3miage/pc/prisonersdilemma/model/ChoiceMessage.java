@@ -1,7 +1,5 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model;
 
-import fr.uga.l3miage.pc.Choice;
-
 public class ChoiceMessage {
     private String playerId;
     private Choice choice; // Trahir ou Cooperer
