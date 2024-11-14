@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Client, IMessage } from '@stomp/stompjs'; // Assurez-vous d'importer Client et IMessage
 import * as SockJS from 'sockjs-client';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class WebsocketService {
   private stompClient: Client;
   private connectionStatus:Subject<boolean> = new Subject<boolean>();
 
-  constructor() {
+  constructor(private router : Router) {
     this.stompClient = new Client({
       webSocketFactory: () => new SockJS('http://localhost:8080/server'),
       connectHeaders: {
@@ -51,6 +52,7 @@ export class WebsocketService {
       });
 
       this.stompClient.subscribe('/topic/result', (message: IMessage) => {
+        console.log("j ai rcu le res : ",message.body);
         const parsedMessage = JSON.parse(message.body);
         this.resultSubject.next({"reponseJ1" : parsedMessage.reponseJ1,"reponseJ2":parsedMessage.reponseJ2,"scoreJ1":parsedMessage.scoreJ1,"scoreJ2":parsedMessage.scoreJ2});
       });
@@ -84,6 +86,8 @@ export class WebsocketService {
       this.stompClient.deactivate();
       console.log('Déconnecté');
       this.connectionStatus.next(false);
+      //On envoie a la page de end-galme quand on se deconnecte
+      this.router.navigate(['/end-game']);
     } else {
       console.log("Le client n'est pas connecté.");
     }

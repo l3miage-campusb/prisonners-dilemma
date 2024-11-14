@@ -13,12 +13,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { GameComponent } from './game/game.component';
 import { CommonModule } from '@angular/common';
+import { StrategyDialogComponent } from './game/strategy-dialog/strategy-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EndGameComponent } from './end-game/end-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    GameComponent
+    GameComponent,
+    StrategyDialogComponent,
+    EndGameComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
