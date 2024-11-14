@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategySondeurRepentant implements IStrategy {
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private static final double PROBABILITETRAHISON = 0.2; // Probabilité de trahir même après la coopération de l'adversaire
+    private static final double PROBABILITETRAHISON = 0.05; // Probabilité de trahir même après la coopération de l'adversaire
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {

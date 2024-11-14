@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyPavlovAleatoire implements IStrategy{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private static final double PROBABILITEALEATOIRE = 0.2; //
+    private static final double PROBABILITEALEATOIRE = 0.05; //
 
     public Choice inverse(Choice choice){
         if(choice==Choice.COOPERER) return Choice.TRAHIR;

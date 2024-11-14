@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPourDeuxDonnants{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private static final double PROBABILITEALEATOIRE = 0.2; //
+    private static final double PROBABILITEALEATOIRE = 0.05; //
 
 
 
