@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class StrategyAdaptatif implements IStrategy {
 
-    private final static int sequence_initiale_length = 11;
-    private final Choice[] SEQUENCE_INITIALE = {
+    private static final int SEQUENCEINITIALELENGTH = 11;
+    private final Choice[] sequenceInitiale = {
             Choice.COOPERER, Choice.COOPERER, Choice.COOPERER, Choice.COOPERER, Choice.COOPERER,
             Choice.COOPERER, Choice.TRAHIR, Choice.TRAHIR, Choice.TRAHIR, Choice.TRAHIR, Choice.TRAHIR
     };
@@ -16,8 +16,8 @@ public class StrategyAdaptatif implements IStrategy {
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
 
-        if(historique.size() < sequence_initiale_length) {
-            return SEQUENCE_INITIALE[historique.size()];
+        if(historique.size() < SEQUENCEINITIALELENGTH) {
+            return sequenceInitiale[historique.size()];
         }
 
         double scoreTotalCooperation = 0;

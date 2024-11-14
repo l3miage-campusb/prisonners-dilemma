@@ -27,7 +27,7 @@ public class StrategyGraduel implements IStrategy {
             if (trahisonsJoueur < trahisonsAdversaire) {
                 return Choice.TRAHIR; // Trahir autant de fois que l'adversaire
             } else {
-                return (trahisonsJoueur % 2 == 0) ? Choice.COOPERER : Choice.COOPERER; // Après avoir trahi, on revient à deux coopérations
+                return Choice.COOPERER; // Après avoir trahi, on revient à deux coopérations
             }
         }
 
