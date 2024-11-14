@@ -97,7 +97,6 @@ public class GameService {
     }
 
     public ResultMessage handleLeave(LeaveMessage message){
-
         this.strategie = StrategyFactory.createStrategy(message.getStrategy());
 
         this.leftPlayerId = message.getPlayerId();

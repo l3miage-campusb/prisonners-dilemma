@@ -77,7 +77,7 @@ export class GameComponent implements OnInit {
       if (result) {
         const message: LeaveMessage = {
           playerId: this.websocketService.id,
-          Strategy: result
+          strategy: result
         }
 
         this.websocketService.sendMessage('/app/leave',JSON.stringify(message));

@@ -2,6 +2,6 @@ import { Strategy } from 'src/app/enums/startegy.enum';
 
 
 export interface LeaveMessage {
-  Strategy: Strategy;
+  strategy: Strategy;
   playerId: number;
 }

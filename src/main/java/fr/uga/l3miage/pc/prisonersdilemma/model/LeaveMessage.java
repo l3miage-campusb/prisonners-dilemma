@@ -3,23 +3,24 @@ package fr.uga.l3miage.pc.prisonersdilemma.model;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
 
 public class LeaveMessage {
-    private Strategy strategie;
     private int playerId; // Trahir ou Cooperer
+    private Strategy strategy;
+
 
     // Constructeur, getters et setters
     public LeaveMessage() {}
 
-    public LeaveMessage(Strategy strategie, int playerId) {
-        this.strategie = strategie;
+    public LeaveMessage(Strategy strategy, int playerId) {
+        this.strategy = strategy;
         this.playerId = playerId;
     }
 
     public int getPlayerId() {
-        return this.playerId;
+        return playerId;
     }
 
     public Strategy getStrategy() {
-        return this.strategie;
+        return strategy;
     }
 
 
