@@ -40,7 +40,7 @@ public class StrategyDonnantPourDeuxDonnantsAleatoireTest {
         Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
 
         // Vérifier
-        assertEquals(Choice.COOPERER, choix, "Le joueur 1 doit coopérer, car le dernier coup de l'adversaire était COOPERER");
+        assertEquals(Choice.COOPERER, choix, "Le joueur 1 doitt coopérer, car le dernier coup de l'adversaire était COOPERER");
     }
 
     @Test
