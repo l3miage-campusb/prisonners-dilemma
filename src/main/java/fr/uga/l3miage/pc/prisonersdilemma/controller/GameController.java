@@ -25,7 +25,7 @@ public class GameController {
     public void handleChoice(ChoiceMessage message) {
         // Logique pour gérer le choix des joueurs
         ResultMessage result = gameService.processChoice(message);
-        System.out.println("result vzut : "+result);
+        System.out.println("result vaut : "+result);
         //Le résultat est nul si on a aps encore recu les deux réponses
         if(result !=null){
             messagingTemplate.convertAndSend("/topic/result", result);
