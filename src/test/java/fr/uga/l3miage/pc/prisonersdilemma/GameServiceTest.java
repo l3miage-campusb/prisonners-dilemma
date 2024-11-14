@@ -3,8 +3,11 @@ package fr.uga.l3miage.pc.prisonersdilemma;
 import fr.uga.l3miage.pc.Choice;
 import fr.uga.l3miage.pc.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.controller.GameController;
+import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
+import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAleatoire;
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyToujoursCooperer;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
@@ -122,8 +125,95 @@ class GameServiceTest {
         assertEquals(result.getReponseJ2(),resultexpected.getReponseJ2());
         assertEquals(result.getScoreJ1(),resultexpected.getScoreJ1());
         assertEquals(result.getScoreJ2(),resultexpected.getScoreJ2());
+    }
 
+    @Test
+    void testProcessChoice_OneChoiceOnly() {
+        // Arrange
+        ChoiceMessage choiceMessage = new ChoiceMessage("1", Choice.COOPERER);
+        gameService.setChoixJ2(null); // Aucun choix pour joueur 2
 
+        // Act
+        ResultMessage result = gameService.processChoice(choiceMessage);
+
+        // Assert
+        assertNull(result, "Le résultat devrait être nul tant que les deux choix ne sont pas reçus");
+    }
+
+    @Test
+    void testProcessChoice_BothChoicesReceived() {
+        // Arrange
+        ChoiceMessage choiceMessageJ1 = new ChoiceMessage("1", Choice.COOPERER);
+        ChoiceMessage choiceMessageJ2 = new ChoiceMessage("2", Choice.TRAHIR);
+        gameService.processChoice(choiceMessageJ1);
+
+        // Act
+        ResultMessage result = gameService.processChoice(choiceMessageJ2);
+
+        // Assert
+        assertNotNull(result, "Le résultat ne devrait pas être nul une fois les deux choix reçus");
+        assertEquals(0, result.getScoreJ1(), "Score du joueur 1 devrait être 0");
+        assertEquals(5, result.getScoreJ2(), "Score du joueur 2 devrait être 5");
+    }
+
+    @Test
+    void testHandleLeave_Player1Leaves_Player2HasMadeChoice() {
+        // Arrange
+        gameService.setChoixJ2(Choice.TRAHIR);  // Joueur 2 a choisi de trahir
+        LeaveMessage leaveMessage = new LeaveMessage(Strategy.TOUJOURS_COOPERER, 1);  // Joueur 1 quitte avec une stratégie
+
+        // Act
+        ResultMessage result = gameService.handleLeave(leaveMessage);
+
+        // Assert
+        assertNotNull(result, "Un résultat devrait être généré après le départ du joueur 1");
+        assertEquals("Vous avez été trahis par l'adversaire", result.getReponseJ1());
+        assertEquals("Vous avez réussi à trahir l'adversaire", result.getReponseJ2());
+        assertEquals(0, result.getScoreJ1());
+        assertEquals(5, result.getScoreJ2());
+    }
+
+    @Test
+    void testHandleLeave_Player2Leaves_Player1HasMadeChoice() {
+        // Arrange
+        gameService.setChoixJ1(Choice.COOPERER);  // Joueur 1 a choisi de coopérer
+        LeaveMessage leaveMessage = new LeaveMessage(Strategy.TOUJOURS_TRAHIR, 2);  // Joueur 2 quitte avec une stratégie
+
+        // Act
+        ResultMessage result = gameService.handleLeave(leaveMessage);
+
+        // Assert
+        assertNotNull(result, "Un résultat devrait être généré après le départ du joueur 2");
+        assertEquals("Vous avez été trahis par l'adversaire", result.getReponseJ1());
+        assertEquals("Vous avez réussi à trahir l'adversaire", result.getReponseJ2());
+        assertEquals(0, result.getScoreJ1());
+        assertEquals(5, result.getScoreJ2());
+    }
+
+    @Test
+    void testHandleLeave_Player1Leaves_NoChoiceFromPlayer2() {
+        // Arrange
+        gameService.setChoixJ2(null);  // Joueur 2 n'a pas fait de choix
+        LeaveMessage leaveMessage = new LeaveMessage(Strategy.TOUJOURS_COOPERER, 1);  // Joueur 1 quitte
+
+        // Act
+        ResultMessage result = gameService.handleLeave(leaveMessage);
+
+        // Assert
+        assertNull(result, "Le résultat devrait être nul si le joueur restant n'a pas fait de choix.");
+    }
+
+    @Test
+    void testHandleLeave_Player2Leaves_NoChoiceFromPlayer1() {
+        // Arrange
+        gameService.setChoixJ1(null);  // Joueur 1 n'a pas fait de choix
+        LeaveMessage leaveMessage = new LeaveMessage(Strategy.TOUJOURS_TRAHIR, 2);  // Joueur 2 quitte
+
+        // Act
+        ResultMessage result = gameService.handleLeave(leaveMessage);
+
+        // Assert
+        assertNull(result, "Le résultat devrait être nul si le joueur restant n'a pas fait de choix.");
     }
 
 

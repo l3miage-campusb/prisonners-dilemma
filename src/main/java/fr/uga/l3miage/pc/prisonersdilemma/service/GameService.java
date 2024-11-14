@@ -36,8 +36,12 @@ public class GameService {
         // Logique pour traiter les choix des joueurs
 
 
-        if(this.leftPlayerId != -1){
-            return getResults(message.getChoice(), strategie.faireUnChoix(historique,leftPlayerId));
+
+        if(this.leftPlayerId == 1){
+            return getResults(strategie.faireUnChoix(historique,leftPlayerId),message.getChoice());
+        }
+        else if(this.leftPlayerId == 2){
+            return getResults(message.getChoice(),strategie.faireUnChoix(historique,leftPlayerId));
         }
 
         if (message.getPlayerId().equals("1")){
@@ -99,7 +103,7 @@ public class GameService {
         this.leftPlayerId = message.getPlayerId();
 
         if(this.leftPlayerId == 1 && this.choixJ2 != null){
-            return getResults(choixJ2, strategie.faireUnChoix(historique,leftPlayerId));
+            return getResults(strategie.faireUnChoix(historique,leftPlayerId), choixJ2);
         }
         else if(this.leftPlayerId == 2 && this.choixJ1 != null){
             return getResults(choixJ1, strategie.faireUnChoix(historique,leftPlayerId));
