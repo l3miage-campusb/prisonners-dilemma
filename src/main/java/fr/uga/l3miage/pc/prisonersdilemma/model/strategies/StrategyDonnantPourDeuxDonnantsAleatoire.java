@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPourDeuxDonnants{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final static double probabiliteAleatoire = 0.2; //
+    private static final double PROBABILITEALEATOIRE = 0.2; //
 
 
 
@@ -20,7 +20,7 @@ public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPou
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 
-        if (secureRandom.nextDouble() < probabiliteAleatoire) {   //si prob in 20% aleatoiree
+        if (secureRandom.nextDouble() < PROBABILITEALEATOIRE) {   //si prob in 20% aleatoiree
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 

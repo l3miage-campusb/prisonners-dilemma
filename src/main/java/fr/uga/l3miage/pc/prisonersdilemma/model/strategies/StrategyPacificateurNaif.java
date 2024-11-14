@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyPacificateurNaif implements  IStrategy{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final static double probabiliteAleatoire = 0.2; // 20% de probabilidad de jugar al azar
+    private static final double PROBABILITEALEATOIRE = 0.2; // 20% de probabilidad de jugar al azar
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
@@ -24,7 +24,7 @@ public class StrategyPacificateurNaif implements  IStrategy{
         Choice dernierChoix2 = dernierTour.getChoixJoueur2();
 
         // Verifica si se juega aleatoriamente según la probabilidad
-        if (secureRandom.nextDouble() < probabiliteAleatoire && (dernierChoix1==Choice.TRAHIR || dernierChoix2==Choice.TRAHIR)) {
+        if (secureRandom.nextDouble() < PROBABILITEALEATOIRE && (dernierChoix1==Choice.TRAHIR || dernierChoix2==Choice.TRAHIR)) {
             return Choice.COOPERER;
         }
 

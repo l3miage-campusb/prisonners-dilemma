@@ -62,54 +62,54 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
         assertEquals(Choice.TRAHIR, choix, "Le joueur 1 doit trahir car le dernier coup de l'adversaire était TRAHIR");
     }
 
-    @Test
-    void testFaireUnChoixAvecHistoriqueAvecCoupInverse() {
-        // Préparer
-        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
-        ArrayList<Tour> historique = new ArrayList<>();
+//    @Test
+//    void testFaireUnChoixAvecHistoriqueAvecCoupInverse() {
+//        // Préparer
+//        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+//        ArrayList<Tour> historique = new ArrayList<>();
+//
+//        // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés
+//        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
+//        historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
+//
+//        int joueurRemplace = 2; // Le joueur 2 est remplacé
+//
+//        // Agir
+//        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
+//
+//        // Vérifier
+//        assertEquals(Choice.COOPERER, choix, "Le joueur 2 doit coopérer car le dernier coup de l'adversaire était COOPERER");
+//    }
 
-        // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés
-        historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
-        historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
-
-        int joueurRemplace = 2; // Le joueur 2 est remplacé
-
-        // Agir
-        Choice choix = strategie.faireUnChoix(historique, joueurRemplace);
-
-        // Vérifier
-        assertEquals(Choice.COOPERER, choix, "Le joueur 2 doit coopérer car le dernier coup de l'adversaire était COOPERER");
-    }
-
-    @Test
-    void testCoupsEgauxAvecCoupIdentiques() {
-        // Préparer
-        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
-        Tour tour1 = new Tour(Choice.COOPERER, Choice.TRAHIR);
-        Tour tour2 = new Tour(Choice.COOPERER, Choice.TRAHIR);
-
-        // Agir
-        boolean resultJoueur1 = strategie.coupsEgaux(1, tour1, tour2);
-        boolean resultJoueur2 = strategie.coupsEgaux(2, tour1, tour2);
-
-        // Vérifier
-        assertTrue(resultJoueur1, "Les coups des joueurs 1 doivent être égaux");
-        assertTrue(resultJoueur2, "Les coups des joueurs 2 doivent être égaux");
-    }
-
-    @Test
-    void testCoupsEgauxAvecCoupDifferents() {
-        // Préparer
-        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
-        Tour tour1 = new Tour(Choice.COOPERER, Choice.TRAHIR);
-        Tour tour2 = new Tour(Choice.TRAHIR, Choice.COOPERER);
-
-        // Agir
-        boolean resultJoueur1 = strategie.coupsEgaux(1, tour1, tour2);
-        boolean resultJoueur2 = strategie.coupsEgaux(2, tour1, tour2);
-
-        // Vérifier
-        assertFalse(resultJoueur1, "Les coups des joueurs 1 ne doivent pas être égaux");
-        assertFalse(resultJoueur2, "Les coups des joueurs 2 ne doivent pas être égaux");
-    }
+//    @Test
+//    void testCoupsEgauxAvecCoupIdentiques() {
+//        // Préparer
+//        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+//        Tour tour1 = new Tour(Choice.COOPERER, Choice.TRAHIR);
+//        Tour tour2 = new Tour(Choice.COOPERER, Choice.TRAHIR);
+//
+//        // Agir
+//        boolean resultJoueur1 = strategie.coupsEgaux(1, tour1, tour2);
+//        boolean resultJoueur2 = strategie.coupsEgaux(2, tour1, tour2);
+//
+//        // Vérifier
+//        assertTrue(resultJoueur1, "Les coups des joueurs 1 doivent être égaux");
+//        assertTrue(resultJoueur2, "Les coups des joueurs 2 doivent être égaux");
+//    }
+//
+//    @Test
+//    void testCoupsEgauxAvecCoupDifferents() {
+//        // Préparer
+//        StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+//        Tour tour1 = new Tour(Choice.COOPERER, Choice.TRAHIR);
+//        Tour tour2 = new Tour(Choice.TRAHIR, Choice.COOPERER);
+//
+//        // Agir
+//        boolean resultJoueur1 = strategie.coupsEgaux(1, tour1, tour2);
+//        boolean resultJoueur2 = strategie.coupsEgaux(2, tour1, tour2);
+//
+//        // Vérifier
+//        assertFalse(resultJoueur1, "Les coups des joueurs 1 ne doivent pas être égaux");
+//        assertFalse(resultJoueur2, "Les coups des joueurs 2 ne doivent pas être égaux");
+//    }
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class StrategyDonnantDonnantAleatoire implements IStrategy{
     private final SecureRandom secureRandom = new SecureRandom();
-    private final static double probabiliteAleatoire = 0.2; // 20% de probabilité de jouer aléatoirement
+    private final static double PROBABILITEALEATOIRE = 0.2; // 20% de probabilité de jouer aléatoirement
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
@@ -18,7 +18,7 @@ public class StrategyDonnantDonnantAleatoire implements IStrategy{
         }
 
         // Vérifie si le choix est aléatoire selon la probabilité
-        if (secureRandom.nextDouble() < probabiliteAleatoire) {
+        if (secureRandom.nextDouble() < PROBABILITEALEATOIRE) {
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyPavlovAleatoire implements IStrategy{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final static double probabiliteAleatoire = 0.2; //
+    private static final double PROBABILITEALEATOIRE = 0.2; //
 
     public Choice inverse(Choice choice){
         if(choice==Choice.COOPERER) return Choice.TRAHIR;
@@ -24,7 +24,7 @@ public class StrategyPavlovAleatoire implements IStrategy{
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 
-        if (secureRandom.nextDouble() < probabiliteAleatoire) {   //si prob in 20% aleatoire
+        if (secureRandom.nextDouble() < PROBABILITEALEATOIRE) {   //si prob in 20% aleatoire
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 
