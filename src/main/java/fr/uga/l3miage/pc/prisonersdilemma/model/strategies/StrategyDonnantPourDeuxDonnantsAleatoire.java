@@ -16,11 +16,10 @@ public class StrategyDonnantPourDeuxDonnantsAleatoire implements IStrategy{
         if(joueur==1){
             return tour1.choixJoueur1==tour2.choixJoueur1;
         }
-        if(joueur==2){
+        else{
             return tour1.choixJoueur2==tour2.choixJoueur2;
         }
 
-        return false;  //gerer erreur??????????
     }
 
 
@@ -51,12 +50,10 @@ public class StrategyDonnantPourDeuxDonnantsAleatoire implements IStrategy{
             return coupsEgaux ?  dernierTour.choixJoueur2 : inverse(dernierTour.choixJoueur2);     //On suppose que on doit envoyer le meme EXCLUSIVEMENT s'il y a deux coups pareils d'affilee
         }
 
-        if(joueurRemplace==2){
+        else{
             coupsEgaux=coupsEgaux(1,avantDernierTour,dernierTour);
             return coupsEgaux ? dernierTour.choixJoueur1 : inverse(dernierTour.choixJoueur1);
         }
 
-
-        return null;
     }
 }
