@@ -113,4 +113,22 @@ public class GameService {
         return null;
 
     }
+
+
+    public void setChoixJ1(Choice choixJ1) {
+        this.choixJ1 = choixJ1;
+    }
+
+    public void setChoixJ2(Choice choixJ2) {
+        this.choixJ2 = choixJ2;
+    }
+
+    public void setScorej1(int scorej1) {
+        this.scorej1 = scorej1;
+    }
+
+    public void setScoreJ2(int scoreJ2) {
+        this.scoreJ2 = scoreJ2;
+    }
+
 }
