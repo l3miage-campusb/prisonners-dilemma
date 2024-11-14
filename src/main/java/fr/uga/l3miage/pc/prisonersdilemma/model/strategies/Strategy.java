@@ -15,9 +15,9 @@ public enum Strategy {
     TOUJOURS_COOPERER,          //fait,teste
     RANCUNIER,                  //fait et teste
     PAVLOV,                     //fait et teste
-    PAVLOV_ALEATOIRE,           //fait,test
-    ADAPTATIF,
+    PAVLOV_ALEATOIRE,           //fait,teste
+    ADAPTATIF,                  //fait,teste
     GRADUEL,
-    DONNANT_DONNANT_SUPCONNEUX,
+    DONNANT_DONNANT_SUPCONNEUX,         //fait
     RANCUNIER_DOUX
 }
