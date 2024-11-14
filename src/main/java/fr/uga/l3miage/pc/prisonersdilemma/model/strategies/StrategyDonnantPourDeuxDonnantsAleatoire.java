@@ -20,7 +20,7 @@ public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPou
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 
-        if (secureRandom.nextDouble() < probabiliteAleatoire) {   //si prob in 20% aleatoire
+        if (secureRandom.nextDouble() < probabiliteAleatoire) {   //si prob in 20% aleatoiree
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
         }
 
