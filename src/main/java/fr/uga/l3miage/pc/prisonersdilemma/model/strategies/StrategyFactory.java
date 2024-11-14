@@ -1,8 +1,11 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
 
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.*;
 
 public class StrategyFactory {
+
+    private StrategyFactory(){
+
+    }
 
     public static IStrategy createStrategy(Strategy strategy) {
         switch (strategy) {

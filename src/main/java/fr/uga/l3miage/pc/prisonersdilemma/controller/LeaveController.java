@@ -3,7 +3,6 @@ package fr.uga.l3miage.pc.prisonersdilemma.controller;
 
 import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 

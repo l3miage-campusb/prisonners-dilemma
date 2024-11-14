@@ -16,11 +16,11 @@ public class StrategyDonnantDonnant implements IStrategy{
 
         Tour dernierTour = historique.get(historique.size()-1);
         if(joueurRemplace==1){
-            return dernierTour.choixJoueur2;
+            return dernierTour.getChoixJoueur2();
         }
 
         else{
-            return dernierTour.choixJoueur1;
+            return dernierTour.getChoixJoueur1();
         }
     }
 }

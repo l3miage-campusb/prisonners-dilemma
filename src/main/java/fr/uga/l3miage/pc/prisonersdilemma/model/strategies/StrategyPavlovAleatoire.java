@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyPavlovAleatoire implements IStrategy{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final double probabiliteAleatoire = 0.2; //
+    private final static double probabiliteAleatoire = 0.2; //
 
     public Choice inverse(Choice choice){
         if(choice==Choice.COOPERER) return Choice.TRAHIR;
@@ -31,24 +31,24 @@ public class StrategyPavlovAleatoire implements IStrategy{
         Tour dernierTour = historique.get(historique.size()-1);
 
         if(joueurRemplace==1){
-            if(dernierTour.choixJoueur1==Choice.TRAHIR && dernierTour.choixJoueur2==Choice.COOPERER){   //J1 obtient 5 points
+            if(dernierTour.getChoixJoueur1()==Choice.TRAHIR && dernierTour.getChoixJoueur2()==Choice.COOPERER){   //J1 obtient 5 points
                 return Choice.TRAHIR;
             }
-            if(dernierTour.choixJoueur1==Choice.COOPERER && dernierTour.choixJoueur2==Choice.COOPERER){
+            if(dernierTour.getChoixJoueur1()==Choice.COOPERER && dernierTour.getChoixJoueur2()==Choice.COOPERER){
                 return Choice.COOPERER;
             }else{
-                return inverse(dernierTour.choixJoueur1);
+                return inverse(dernierTour.getChoixJoueur1());
             }
         }
 
         if(joueurRemplace==2){
-            if(dernierTour.choixJoueur2==Choice.TRAHIR && dernierTour.choixJoueur1==Choice.COOPERER){
+            if(dernierTour.getChoixJoueur2()==Choice.TRAHIR && dernierTour.getChoixJoueur1()==Choice.COOPERER){
                 return Choice.TRAHIR;
             }
-            if(dernierTour.choixJoueur1==Choice.COOPERER && dernierTour.choixJoueur2==Choice.COOPERER){
+            if(dernierTour.getChoixJoueur1()==Choice.COOPERER && dernierTour.getChoixJoueur2()==Choice.COOPERER){
                 return Choice.COOPERER;
             }else{
-                return inverse(dernierTour.choixJoueur2);
+                return inverse(dernierTour.getChoixJoueur2());
             }
         }
 

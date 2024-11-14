@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPourDeuxDonnants{
 
     private final SecureRandom secureRandom = new SecureRandom();
-    private final double probabiliteAleatoire = 0.2; //
+    private final static double probabiliteAleatoire = 0.2; //
 
 
 
@@ -31,12 +31,12 @@ public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPou
 
         if(joueurRemplace==1){
             coupsEgaux=coupsEgaux(2,avantDernierTour,dernierTour);
-            return coupsEgaux ?  dernierTour.choixJoueur2 : inverse(dernierTour.choixJoueur2);     //On suppose que on doit envoyer le meme EXCLUSIVEMENT s'il y a deux coups pareils d'affilee
+            return coupsEgaux ?  dernierTour.getChoixJoueur2() : inverse(dernierTour.getChoixJoueur2());     //On suppose que on doit envoyer le meme EXCLUSIVEMENT s'il y a deux coups pareils d'affilee
         }
 
         else{
             coupsEgaux=coupsEgaux(1,avantDernierTour,dernierTour);
-            return coupsEgaux ? dernierTour.choixJoueur1 : inverse(dernierTour.choixJoueur1);
+            return coupsEgaux ? dernierTour.getChoixJoueur1() : inverse(dernierTour.getChoixJoueur1());
         }
 
     }
