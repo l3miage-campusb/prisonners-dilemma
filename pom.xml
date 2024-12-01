@@ -87,6 +87,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Indiquer la classe principale ici -->
+                    <mainClass>fr.uga.l3miage.pc.prisonersdilemma.PrisonersDilemmaApplication</mainClass> <!-- Remplace par le nom de ta classe principale -->
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
