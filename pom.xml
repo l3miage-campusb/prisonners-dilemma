@@ -90,16 +90,19 @@
                 <configuration>
                     <!-- Indiquer la classe principale ici -->
                     <mainClass>fr.uga.l3miage.pc.prisonersdilemma.PrisonersDilemmaApplication</mainClass> <!-- Remplace par le nom de ta classe principale -->
+                    <layout>JAR</layout>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
+
             </plugin>
             <!-- Plugin JaCoCo pour la couverture de code -->
             <plugin>
