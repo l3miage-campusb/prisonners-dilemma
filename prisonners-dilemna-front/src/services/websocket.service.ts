@@ -25,7 +25,7 @@ export class WebsocketService {
 
   constructor(private router : Router) {
     this.stompClient = new Client({
-      webSocketFactory: () => new SockJS('https://web-production-d29a4.up.railway.app'),
+      webSocketFactory: () => new SockJS('https://web-production-d29a4.up.railway.app/server'),
       connectHeaders: {
         login: 'user',
         passcode: 'password'
