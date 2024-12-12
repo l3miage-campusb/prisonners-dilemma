@@ -5,7 +5,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.util.ArrayList;
 
-public class StrategyRancunier implements  IStrategy{
+public class StrategyRancunier extends StrategieAbstract{
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {

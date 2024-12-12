@@ -6,6 +6,7 @@ public class LeaveMessage {
     private int playerId; // Trahir ou Cooperer
     private Strategy strategy;
 
+    
 
     // Constructeur, getters et setters
     public LeaveMessage() {}

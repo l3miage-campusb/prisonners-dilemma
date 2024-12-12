@@ -7,7 +7,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.util.ArrayList;
 
-public class StrategyAdaptatif implements IStrategy {
+public class StrategyAdaptatif extends StrategieAbstract {
 
     private static final int SEQUENCEINITIALELENGTH = 11;
     private final Choice[] sequenceInitiale = {

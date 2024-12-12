@@ -1,13 +1,15 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
 
 
+import contract.CommonStrategy;
+
 public class StrategyFactory {
 
     private StrategyFactory(){
 
     }
 
-    public static IStrategy createStrategy(Strategy strategy) {
+    public static CommonStrategy createStrategy(Strategy strategy) {
         switch (strategy) {
             case ADAPTATIF:
                 return new StrategyAdaptatif(); // Assurez-vous que la classe existe et implémente IStrategy.

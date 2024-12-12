@@ -6,7 +6,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public class StrategyPavlov implements IStrategy{
+public class StrategyPavlov extends StrategieAbstract{
 
     private final SecureRandom secureRandom = new SecureRandom();
 

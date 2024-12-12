@@ -5,7 +5,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.util.ArrayList;
 
-public class StrategyRancunierDoux implements IStrategy {
+public class StrategyRancunierDoux extends StrategieAbstract {
 
     private int phaseCastigo = 0; // Contador de la fase de castigo
     private int ultimaTraicionAdversario = -1; // Índice de la última traición válida del adversario fuera del castigo

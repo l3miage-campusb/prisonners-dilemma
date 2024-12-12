@@ -86,7 +86,7 @@
             <artifactId>strategie-contract</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/strategie-contract-1.0.0.jar</systemPath>
+            <systemPath>${project.basedir}/libs/interface_commune.jar</systemPath>
         </dependency>
 
     </dependencies>
