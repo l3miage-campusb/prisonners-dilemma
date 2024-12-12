@@ -3,9 +3,10 @@ package fr.uga.l3miage.pc.prisonersdilemma.service;
 import contract.Turn;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
+@Service
 public class Util {
 
     public static ArrayList<Tour> convertTurnsToTours(Turn[] turns) {

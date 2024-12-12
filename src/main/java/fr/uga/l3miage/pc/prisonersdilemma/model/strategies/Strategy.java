@@ -19,5 +19,23 @@ public enum Strategy {
     ADAPTATIF,                  //fait,teste
     GRADUEL,                    //fait
     DONNANT_DONNANT_SUPCONNEUX,         //fait,teste
-    RANCUNIER_DOUX                      //fait,teste1/2
+    RANCUNIER_DOUX,                      //fait,teste1/2
+    ADAPTIVE,
+    ALWAYSBETRAY ,
+    ALWAYSCOOPERATE,
+    GRADUALSTRATEGY ,
+    NAIVEPEACEMAKER ,
+    PAVLOV2 ,
+    PAVLORANDOM ,
+    PEACEMAKER ,
+    POLLSTERRANDOMBETRAY,
+    RANDOMSTRATEGY ,
+    REPENTANTPOLLSTER ,
+    RESENTFULSTRATEGY ,
+    SOFTRESENTFUL,
+    TITFORTAT ,
+    TITFORTATRANDOM,
+    TITFORTATSUSPICIOUS ,
+    TITFORTWOTATS ,
+    TITFORTWOTATSRANDOM ,
 }
