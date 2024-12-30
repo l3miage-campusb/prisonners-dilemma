@@ -80,22 +80,22 @@
             <version>2.15.0</version> <!-- Use a compatible version -->
         </dependency>
 
-
         <dependency>
             <groupId>fr.uga.miage.m1</groupId>
-            <artifactId>strategie-contract</artifactId>
+            <artifactId>interface_commune</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/interface_commune.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/resources/libs/interface_commune.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>fr.uga.miage.m1</groupId>
-            <artifactId>other-strategies</artifactId>
+            <artifactId>otherStrategies</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/otherStrategies.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/resources/libs/otherStrategies.jar</systemPath>
         </dependency>
+
 
     </dependencies>
     <build>
@@ -154,6 +154,55 @@
                     </archive>
                 </configuration>
             </plugin>
+
+            <!-- Plugin pour copier les fichiers .jar depuis src/main/resources/libs vers target/classes/libs -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase> <!-- Lors de la phase process-resources -->
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes/libs</outputDirectory> <!-- Cible dans target/classes/libs -->
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/libs</directory> <!-- Source des fichiers -->
+                                    <includes>
+                                        <include>**/*.jar</include> <!-- Inclure tous les fichiers .jar -->
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Plugin pour créer un JAR avec toutes les dépendances -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase> <!-- Exécution pendant la phase de package -->
+                        <goals>
+                            <goal>single</goal> <!-- Créer un seul JAR avec toutes les dépendances -->
+                        </goals>
+                        <configuration>
+                            <!-- Descripteur prédéfini pour inclure les dépendances dans le JAR -->
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
 
         </plugins>
     </build>
