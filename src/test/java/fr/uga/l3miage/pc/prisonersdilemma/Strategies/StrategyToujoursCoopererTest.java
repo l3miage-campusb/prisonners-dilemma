@@ -1,8 +1,9 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Strategies;
 
+import contract.CommonStrategy;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.IStrategy;
+
 import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyToujoursCooperer;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +29,7 @@ class StrategyToujoursCoopererTest {
         assertEquals(Choice.COOPERER, choix, "La estrategia debe devolver siempre COOPERER cuando el historial está vacío");
         assertNotNull(choix, "El resultado no debe ser null");
         assertFalse(historique.contains(choix), "El historial no debería afectar el resultado de la elección");
-        assertTrue(strat instanceof IStrategy, "La estrategia debería ser una instancia de IStrategy");
+        assertTrue(strat instanceof CommonStrategy, "La estrategia debería ser una instancia de IStrategy");
     }
 
     @Test

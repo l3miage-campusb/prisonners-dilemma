@@ -5,7 +5,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.util.ArrayList;
 
-public class StrategyDonnantPourDeuxDonnants implements IStrategy{
+public class StrategyDonnantPourDeuxDonnants extends StrategieAbstract{
 
     public boolean coupsEgaux(int joueur, Tour tour1, Tour tour2){
         if(joueur==1){

@@ -6,7 +6,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public class StrategySondeurNaif implements  IStrategy{
+public class StrategySondeurNaif extends StrategieAbstract{
 
     private final SecureRandom secureRandom = new SecureRandom();
     private static final double PROBABILITEALEATOIRE = 0.05; // 20% de probabilidad de jugar al azar

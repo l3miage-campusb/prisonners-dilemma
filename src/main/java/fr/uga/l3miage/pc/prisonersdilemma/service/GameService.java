@@ -1,5 +1,7 @@
 package fr.uga.l3miage.pc.prisonersdilemma.service;
 
+import contract.CommonStrategy;
+import contract.Game;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
@@ -10,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertChoice;
+import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertToursToTurns;
+
 @Service
 public class GameService {
 
@@ -18,7 +23,7 @@ public class GameService {
     Choice choixJ1 = null;
     Choice choixJ2 = null;
 
-    IStrategy strategie ;
+    CommonStrategy strategie ;
     int leftPlayerId = -1;
 
     ArrayList<Tour> historique = new ArrayList<>();
@@ -38,10 +43,10 @@ public class GameService {
 
 
         if(this.leftPlayerId == 1){
-            return getResults(strategie.faireUnChoix(historique,leftPlayerId),message.getChoice());
+            return getResults(convertChoice(strategie.makeChoice(new Game(convertToursToTurns(historique)),leftPlayerId)),message.getChoice());
         }
         else if(this.leftPlayerId == 2){
-            return getResults(message.getChoice(),strategie.faireUnChoix(historique,leftPlayerId));
+            return getResults(message.getChoice(),convertChoice(strategie.makeChoice(new Game(convertToursToTurns(historique)),leftPlayerId)));
         }
 
         if (message.getPlayerId().equals("1")){
@@ -98,15 +103,17 @@ public class GameService {
     }
 
     public ResultMessage handleLeave(LeaveMessage message){
+
+        System.out.println("je hadnble leaves avec : "+message.getStrategy());
         this.strategie = StrategyFactory.createStrategy(message.getStrategy());
 
         this.leftPlayerId = message.getPlayerId();
 
         if(this.leftPlayerId == 1 && this.choixJ2 != null){
-            return getResults(strategie.faireUnChoix(historique,leftPlayerId), choixJ2);
+            return getResults(convertChoice(strategie.makeChoice(new Game(convertToursToTurns(historique)),leftPlayerId)), choixJ2);
         }
         else if(this.leftPlayerId == 2 && this.choixJ1 != null){
-            return getResults(choixJ1, strategie.faireUnChoix(historique,leftPlayerId));
+            return getResults(choixJ1, convertChoice(strategie.makeChoice(new Game(convertToursToTurns(historique)),leftPlayerId)));
         }
         return null;
 

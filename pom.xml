@@ -81,6 +81,22 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>fr.uga.miage.m1</groupId>
+            <artifactId>strategie-contract</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/interface_commune.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.uga.miage.m1</groupId>
+            <artifactId>other-strategies</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/otherStrategies.jar</systemPath>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -125,6 +141,45 @@
                 </executions>
             </plugin>
 
+            <!-- Maven Jar Plugin pour stratégie -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>fr.uga.l3miage.pc.prisonersdilemma.PrisonersDilemmaApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+
+        <!-- Profil pour JAR uniquement pour les stratégies -->
+        <profile>
+            <id>jar-strategies</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <configuration>
+                            <includes>
+                                <include>fr/uga/l3miage/pc/prisonersdilemma/model/strategies/**</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+
+    </profiles>
 </project>
