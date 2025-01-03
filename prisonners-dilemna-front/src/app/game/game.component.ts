@@ -87,6 +87,10 @@ export class GameComponent implements OnInit {
     });
   }
 
+  sortir(){
+    this.websocketService.sendMessage('/app/restart',JSON.stringify("reseteatePUTA"));
+  }
+
   isGameEnded(){
     return this.gameInfo.roundCount ==0;
   }

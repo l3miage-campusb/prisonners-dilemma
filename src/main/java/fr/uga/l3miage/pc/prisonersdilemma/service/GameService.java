@@ -32,6 +32,31 @@ public class GameService {
     int scoreJ2 = 0;
 
 
+    public int nbJoueurController = 0;
+
+    public void redemarrerService(){
+        this.choixJ1 = null;
+        this.choixJ2 = null;
+        this.strategie = null;
+        this.leftPlayerId = -1;
+        historique.clear();
+        scorej1 = 0;
+        scoreJ2 = 0;
+        nbJoueurController = 0;
+    }
+
+    public void printInfos(){
+        System.out.println("Choix J1: " + this.choixJ1);
+        System.out.println("Choix J2: " + this.choixJ2);
+        System.out.println("Strategie: " + this.strategie);
+        System.out.println("LeftPlayerId: " + this.leftPlayerId);
+        for (Tour tour : historique) {
+            System.out.println(tour);
+        }
+        System.out.println("Scorej1: " + this.scorej1);
+        System.out.println("ScoreJ2: " + this.scoreJ2);
+    }
+
     public static GameService getInstance() {
         return instance;
     }

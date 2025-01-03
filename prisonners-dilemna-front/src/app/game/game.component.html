@@ -35,4 +35,7 @@
 
   </div>
   <span *ngIf="isGameEnded()">Fin de la partie</span>
+  <span *ngIf="isGameEnded()">
+    <button mat-raised-button color="primary" (click)="sortir()">SORTIR</button>
+  </span>
 </div>
