@@ -13,11 +13,17 @@
       <p class="waiting-message">Waiting for other player...</p>
     </div>
     <form (ngSubmit)="sendRound()" *ngIf="isOtherPlayerConnected && id==1">
+      <h1>HOLA BASTIEN ERES UNA PUTA</h1>
       <mat-form-field appearance="fill" >
         <mat-label>Number of Rounds</mat-label>
-        <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" >
+        <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" min="1" required >
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" >Send</button>
+          <button mat-raised-button 
+              color="primary" 
+              type="submit" 
+              [disabled]="!roundCount || roundCount < 1">
+        Send
+      </button>
     </form>
   </div>
 </div>
