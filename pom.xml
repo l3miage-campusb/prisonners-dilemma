@@ -155,7 +155,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin pour copier les fichiers .jar depuis src/main/resources/libs vers target/classes/libs -->
+            <!-- Plugin pour copier les fichiers .jar depuis src/main/resources/libs vers target/classes -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -167,7 +167,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/libs</outputDirectory> <!-- Cible dans target/classes/libs -->
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory> <!-- Cible dans target/classes -->
                             <resources>
                                 <resource>
                                     <directory>src/main/resources/libs</directory> <!-- Source des fichiers -->
