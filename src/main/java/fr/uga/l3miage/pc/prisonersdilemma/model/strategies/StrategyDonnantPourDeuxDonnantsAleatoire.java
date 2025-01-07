@@ -8,13 +8,12 @@ import java.util.ArrayList;
 
 public class StrategyDonnantPourDeuxDonnantsAleatoire extends StrategyDonnantPourDeuxDonnants{
 
-    private final SecureRandom secureRandom = new SecureRandom();
     private static final double PROBABILITEALEATOIRE = 0.05; //
-
-
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
 
         if(historique.size() < 2){
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;

@@ -18,7 +18,7 @@ class StrategyPacificateurNaifTest {
 
     @BeforeEach
     void setUp() {
-        strategy = new StrategyPacificateurNaif();
+        strategy = new StrategyPacificateurNaif(); strategy.setSeed(42);
     }
 
     @Test

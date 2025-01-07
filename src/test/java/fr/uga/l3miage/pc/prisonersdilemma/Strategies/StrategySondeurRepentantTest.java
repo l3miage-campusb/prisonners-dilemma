@@ -17,6 +17,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantApresTrahisonAdversairePourJoueur2() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a trahi
@@ -35,6 +36,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantAvecProbabiliteTrahisonAtteinte() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.COOPERER, Choice.COOPERER));
         int joueurRemplace = 1;
@@ -56,6 +58,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantImiterDernierCoupAdversairePourJoueur1() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a coopéré
@@ -74,6 +77,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantAvecHistoriqueVide() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>(); // historique vide
         int joueurRemplace = 1; // indice du joueur, n'affecte pas le résultat
 
@@ -89,6 +93,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantApresTrahison() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a trahi
@@ -107,6 +112,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantApresTrahisonJ2() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a trahi
@@ -125,6 +131,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantApresTrahisonJ2nonTrahison() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a trahi
@@ -144,6 +151,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantAvecProbabiliteTrahison() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter un tour où l'adversaire a coopéré
@@ -163,6 +171,7 @@ class StrategySondeurRepentantTest {
     void testFaireUnChoixSondeurRepentantImitationAdversaire() {
         // Préparer
         StrategySondeurRepentant strategie = new StrategySondeurRepentant();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter des tours précédents, le dernier coup de l'adversaire est TRAHIR

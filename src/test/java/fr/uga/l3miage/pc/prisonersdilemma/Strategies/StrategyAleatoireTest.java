@@ -16,6 +16,7 @@ class StrategyAleatoireTest {
     void testFaireUnChoixAvecHistoriqueVide() {
         // Test avec historique vide
         StrategyAleatoire strategie = new StrategyAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         Choice choix = strategie.faireUnChoix(historique, 1);
 
@@ -28,6 +29,7 @@ class StrategyAleatoireTest {
     void testFaireUnChoixAleatoireDistribution() {
         // Test pour vérifier que tant COOPERER que TRAHIR sont possibles
         StrategyAleatoire strategie = new StrategyAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         Set<Choice> resultats = new HashSet<>();
 

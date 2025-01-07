@@ -15,6 +15,7 @@ class StrategyVraiPacificateurTest {
     void testFaireUnChoixConHistorialMenorDeDos() {
         // Prueba cuando el historial tiene menos de dos jugadas
         StrategyVraiPacificateur strat = new StrategyVraiPacificateur();
+        strat.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         Choice choix = strat.faireUnChoix(historique, 1);
 
@@ -32,6 +33,7 @@ class StrategyVraiPacificateurTest {
     void testFaireUnChoixConTraicionesConsecutivasParaJugador1() {
         // Prueba cuando el jugador 2 traicionó en los dos últimos turnos consecutivos y el jugador reemplazado es el 1
         StrategyVraiPacificateur strat = new StrategyVraiPacificateur();
+        strat.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
         historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
@@ -55,6 +57,7 @@ class StrategyVraiPacificateurTest {
     void testFaireUnChoixSinTraicionesConsecutivasParaJugador1() {
         // Prueba cuando el jugador 2 no traicionó en ambos turnos anteriores
         StrategyVraiPacificateur strat = new StrategyVraiPacificateur();
+        strat.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.COOPERER, Choice.COOPERER));
         historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));
@@ -69,6 +72,7 @@ class StrategyVraiPacificateurTest {
     void testFaireUnChoixConTraicionesConsecutivasParaJugador2() {
         // Prueba cuando el jugador 1 traicionó en los dos últimos turnos consecutivos y el jugador reemplazado es el 2
         StrategyVraiPacificateur strat = new StrategyVraiPacificateur();
+        strat.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
         historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
