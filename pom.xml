@@ -168,7 +168,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>strats</id>
+                        <id>otherStrategies</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>install-file</goal>
