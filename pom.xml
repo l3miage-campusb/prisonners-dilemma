@@ -6,6 +6,8 @@
     <groupId>fr.uga.miage.m1</groupId>
     <artifactId>prisoner_dilemma_g1_2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -84,16 +86,14 @@
             <groupId>fr.uga.miage.m1</groupId>
             <artifactId>interface_commune</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/libs/interface_commune.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>fr.uga.miage.m1</groupId>
             <artifactId>otherStrategies</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/libs/otherStrategies.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
 
 
@@ -103,22 +103,30 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- Indiquer la classe principale ici -->
-                    <mainClass>fr.uga.l3miage.pc.prisonersdilemma.PrisonersDilemmaApplication</mainClass> <!-- Remplace par le nom de ta classe principale -->
-                    <layout>JAR</layout>
-                </configuration>
+                <version>3.3.4</version>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-
+                <dependencies>
+                    <dependency>
+                        <groupId>fr.uga.miage.m1</groupId>
+                        <artifactId>otherStrategies</artifactId>
+                        <version>1.0.0</version>
+                        <scope>compile</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>fr.uga.miage.m1</groupId>
+                        <artifactId>interface_commune</artifactId>
+                        <version>1.0.0</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
-
             </plugin>
             <!-- Plugin JaCoCo pour la couverture de code -->
             <plugin>
@@ -140,76 +148,48 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Maven Jar Plugin pour stratégie -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>fr.uga.l3miage.pc.prisonersdilemma.PrisonersDilemmaApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <!-- Plugin pour copier les fichiers .jar depuis src/main/resources/libs vers target/classes -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.3</version>
                 <executions>
                     <execution>
-                        <phase>process-resources</phase> <!-- Lors de la phase process-resources -->
+                        <id>interface_commune</id>
+                        <phase>initialize</phase>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>install-file</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes</outputDirectory> <!-- Cible dans target/classes -->
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources/libs</directory> <!-- Source des fichiers -->
-                                    <includes>
-                                        <include>**/*.jar</include> <!-- Inclure tous les fichiers .jar -->
-                                    </includes>
-                                </resource>
-                            </resources>
+                            <file>src/main/resources/libs/interface_commune.jar</file>
+                            <groupId>fr.uga.miage.m1</groupId>
+                            <artifactId>interface_commune</artifactId>
+                            <version>1.0.0</version>
+                            <packaging>jar</packaging>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>strats</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>src/main/resources/libs/otherStrategies.jar</file>
+                            <groupId>fr.uga.miage.m1</groupId>
+                            <artifactId>otherStrategies</artifactId>
+                            <version>1.0.0</version>
+                            <packaging>jar</packaging>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- Plugin pour créer un JAR avec toutes les dépendances -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase> <!-- Exécution pendant la phase de package -->
-                        <goals>
-                            <goal>single</goal> <!-- Créer un seul JAR avec toutes les dépendances -->
-                        </goals>
-                        <configuration>
-                            <!-- Descripteur prédéfini pour inclure les dépendances dans le JAR -->
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
 
         </plugins>
     </build>
 
     <profiles>
 
-        <!-- Profil pour JAR uniquement pour les stratégies -->
+        <!-- Profil pour JAR uniquement pour les stratÃ©gies -->
         <profile>
             <id>jar-strategies</id>
             <build>
@@ -227,7 +207,6 @@
                 </plugins>
             </build>
         </profile>
-
 
 
     </profiles>
