@@ -18,8 +18,10 @@ RUN ls -al
 # Dockerfile temporaire pour debug
 RUN ls -al /app
 
+RUN chmod +x app.jar
+
 # Étape 4 : Exposer le port utilisé par l'application
 EXPOSE 8080
 
 # Étape 5 : Démarrer l'application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
