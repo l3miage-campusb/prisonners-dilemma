@@ -2,7 +2,7 @@
 FROM eclipse-temurin:17-jdk-alpine
 
 # Dockerfile temporaire pour debug
-RUN ls -al target
+RUN ls -al
 
 
 # Étape 2 : Définir le répertoire de travail
