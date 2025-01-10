@@ -86,16 +86,14 @@
             <groupId>fr.uga.miage.m1</groupId>
             <artifactId>interface_commune</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/libs/interface_commune.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>fr.uga.miage.m1</groupId>
             <artifactId>otherStrategies</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/libs/otherStrategies.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
 
 
