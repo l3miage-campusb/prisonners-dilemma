@@ -1,6 +1,10 @@
 # Étape 1 : Utiliser une image de base Java
 FROM eclipse-temurin:17-jdk-alpine
 
+# Dockerfile temporaire pour debug
+RUN ls -al target
+
+
 # Étape 2 : Définir le répertoire de travail
 WORKDIR /app
 
