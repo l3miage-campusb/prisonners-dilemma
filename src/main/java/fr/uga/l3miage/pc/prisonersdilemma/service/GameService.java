@@ -142,4 +142,10 @@ public class GameService {
         this.scoreJ2 = scoreJ2;
     }
 
+    public int getNbJoueurController() {
+        return nbJoueurController;
+    }
+    public void setNbJoueurController(int nbJoueurController) {
+        this.nbJoueurController = nbJoueurController;
+    }
 }

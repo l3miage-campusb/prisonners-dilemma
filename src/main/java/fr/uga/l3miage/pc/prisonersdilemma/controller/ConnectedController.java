@@ -21,9 +21,8 @@ public class ConnectedController {
     @SendTo("/topic/connected")
     public String  handleConnected() {
         // Envoie du résultat à tous les clients abonnés au topic /topic/results
-        gameService.nbJoueurController++;
-        System.out.println("Le envio al front : " + gameService.nbJoueurController);
-        return String.valueOf(gameService.nbJoueurController);
+        gameService.setNbJoueurController(gameService.getNbJoueurController()+1);
+        return String.valueOf(gameService.getNbJoueurController());
     }
 
 

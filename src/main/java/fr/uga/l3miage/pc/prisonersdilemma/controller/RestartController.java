@@ -31,7 +31,6 @@ public class RestartController {
 
         System.out.println(message);
         gameService.redemarrerService();
-        gameService.printInfos();
 
         messagingTemplate.convertAndSend("/topic/restart", "ZOERAAAAA");
 
