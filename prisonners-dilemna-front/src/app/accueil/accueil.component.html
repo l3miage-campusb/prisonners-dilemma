@@ -7,7 +7,7 @@
   <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
   <div *ngIf="isConnected">
     <h1 *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</h1>
-    <button *ngIf="id>2" (click)="sendTuer()">TUER SERVEUR ET REDEMARRER YEAH YEAH</button>
+    <button *ngIf="id>2" (click)="sendTuer()">TUER SERVEUR ET REDEMARRER YEAH YEAH YEAH</button>
     <h2>Id du joueur : {{ id }}</h2>
 
     <div *ngIf="!isOtherPlayerConnected">
