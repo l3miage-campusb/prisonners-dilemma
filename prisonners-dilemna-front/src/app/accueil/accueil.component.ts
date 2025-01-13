@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { WebsocketService } from '../../services/websocket.service'; 
+import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-accueil',
@@ -44,7 +44,9 @@ export class AccueilComponent implements OnInit {
 
     //Une fois que l'on sait que le nombre de rounds a été recus, on passe a la page de jeu
     this.websocketService.getRoundObserver().subscribe(() => {
-      this.router.navigate(['/game']);
+      if(this.id<=2 ){
+        this.router.navigate(['/game']);
+      }
     });
   }
 
@@ -52,6 +54,16 @@ export class AccueilComponent implements OnInit {
   sendRound() {
     this.websocketService.sendMessage('/app/round', this.roundCount.toString());
   }
+
+  sendTuer(){
+
+      this.websocketService.sendMessage('/app/restart',JSON.stringify("reseteatePUTA"));
+      window.open('http://localhost:4200', '_blank');
+     
+      console.log("tuerr");
+  }
+
+
 
   // Fonction pour récupérer les messages
 

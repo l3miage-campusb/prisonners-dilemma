@@ -29,6 +29,18 @@ public class GameService {
     private int scorej1 = 0;
     private int scoreJ2 = 0;
 
+    private int nbJoueurController = 0;
+
+    public void redemarrerService(){
+        this.choixJ1 = null;
+        this.choixJ2 = null;
+        this.strategie = null;
+        this.leftPlayerId = -1;
+        historique.clear();
+        scorej1 = 0;
+        scoreJ2 = 0;
+        nbJoueurController = 0;
+    }
 
     public ResultMessage processChoice(ChoiceMessage message) {
 

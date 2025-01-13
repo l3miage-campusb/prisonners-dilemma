@@ -6,18 +6,25 @@
 
   <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
   <div *ngIf="isConnected">
-    <span *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</span>
-    <span>Id du joueur : {{ id }}</span>
+    <h1 *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</h1>
+    <button *ngIf="id>2" (click)="sendTuer()">TUER SERVEUR ET REDEMARRER YEAH YEAH YEAH</button>
+    <h2>Id du joueur : {{ id }}</h2>
 
     <div *ngIf="!isOtherPlayerConnected">
       <p class="waiting-message">Waiting for other player...</p>
     </div>
     <form (ngSubmit)="sendRound()" *ngIf="isOtherPlayerConnected && id==1">
+      <h1>HOLA BASTIEN ERES UNA PUTA SEXOOOO</h1>
       <mat-form-field appearance="fill" >
         <mat-label>Number of Rounds</mat-label>
-        <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" >
+        <input matInput type="number" [(ngModel)]="roundCount" name="roundCount" min="1" required >
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" >Send</button>
+          <button mat-raised-button 
+              color="primary" 
+              type="submit" 
+              [disabled]="!roundCount || roundCount < 1">
+        Send
+      </button>
     </form>
   </div>
 </div>

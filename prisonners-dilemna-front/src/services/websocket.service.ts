@@ -25,8 +25,8 @@ export class WebsocketService {
 
   constructor(private router : Router) {
     this.stompClient = new Client({
-      webSocketFactory: () => new SockJS('https://web-production-d29a4.up.railway.app/server'),
-      //webSocketFactory: () => new SockJS('http://localhost:8080/server'),
+      //webSocketFactory: () => new SockJS('https://web-production-d29a4.up.railway.app/server'),
+      webSocketFactory: () => new SockJS('http://localhost:8080/server'),
       connectHeaders: {
         login: 'user',
         passcode: 'password'
@@ -60,7 +60,14 @@ export class WebsocketService {
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
         this.idSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
+        this.id = Number(message.body);
       });
+
+      this.stompClient.subscribe('/topic/restart', (message: IMessage) => {
+        console.log('MENSAJITOOOOOOOOOO reçu du topic restart:', message.body);
+        this.disconnect()
+      });
+
       this.connectionStatus.next(true);
       this.stompClient.onDisconnect = () => {
         console.log("je rentre dans le ondisconnect");
@@ -87,7 +94,7 @@ export class WebsocketService {
       this.stompClient.deactivate();
       console.log('Déconnecté');
       this.connectionStatus.next(false);
-      //On envoie a la page de end-galme quand on se deconnecte
+      //On envoie a la page de end-galme quand on se deconnecte 
       this.router.navigate(['/end-game']);
     } else {
       console.log("Le client n'est pas connecté.");
