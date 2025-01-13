@@ -6,8 +6,9 @@
 
   <!-- Affichage de l'interface du jeu si l'utilisateur est connecté -->
   <div *ngIf="isConnected">
-    <span *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</span>
-    <span>Id du joueur : {{ id }}</span>
+    <h1 *ngIf="id>2">C est un jeu a deux joueurs que fais tu la ?</h1>
+    <button *ngIf="id>2" (click)="sendTuer()">TUER SERVEUR YEAH YEAH</button>
+    <h2>Id du joueur : {{ id }}</h2>
 
     <div *ngIf="!isOtherPlayerConnected">
       <p class="waiting-message">Waiting for other player...</p>

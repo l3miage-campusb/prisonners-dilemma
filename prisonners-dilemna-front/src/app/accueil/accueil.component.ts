@@ -55,6 +55,16 @@ export class AccueilComponent implements OnInit {
     this.websocketService.sendMessage('/app/round', this.roundCount.toString());
   }
 
+  sendTuer(){
+
+      this.websocketService.sendMessage('/app/restart',JSON.stringify("reseteatePUTA"));
+      window.open('http://localhost:4200', '_blank');
+     
+      console.log("tuerr");
+  }
+
+
+
   // Fonction pour récupérer les messages
 
 

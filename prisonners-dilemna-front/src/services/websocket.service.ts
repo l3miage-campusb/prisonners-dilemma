@@ -60,6 +60,7 @@ export class WebsocketService {
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
         this.idSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
+        this.id = Number(message.body);
       });
 
       this.stompClient.subscribe('/topic/restart', (message: IMessage) => {
@@ -93,7 +94,7 @@ export class WebsocketService {
       this.stompClient.deactivate();
       console.log('Déconnecté');
       this.connectionStatus.next(false);
-      //On envoie a la page de end-galme quand on se deconnecte
+      //On envoie a la page de end-galme quand on se deconnecte 
       this.router.navigate(['/end-game']);
     } else {
       console.log("Le client n'est pas connecté.");
