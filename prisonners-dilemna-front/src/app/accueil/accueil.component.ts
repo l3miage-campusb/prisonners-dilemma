@@ -58,8 +58,8 @@ export class AccueilComponent implements OnInit {
   sendTuer(){
 
       this.websocketService.sendMessage('/app/restart',JSON.stringify("reseteatePUTA"));
-      window.open('http://localhost:4200', '_blank');
-     
+      window.open('https://candid-liger-6e7a01.netlify.app/', '_blank');
+
       console.log("tuerr");
   }
 
