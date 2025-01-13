@@ -60,7 +60,6 @@ export class WebsocketService {
 
       this.stompClient.subscribe('/topic/connected', (message: IMessage) => {
         this.idSubject.next(Number(message.body)); // Mettre à jour le nombre de rounds
-        this.id = Number(message.body);
       });
 
       this.stompClient.subscribe('/topic/restart', (message: IMessage) => {
