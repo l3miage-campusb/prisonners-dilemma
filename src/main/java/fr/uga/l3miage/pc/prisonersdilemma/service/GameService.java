@@ -18,21 +18,18 @@ import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertToursToTurn
 @Service
 public class GameService {
 
-    private static final GameService instance = new GameService();
+    private Choice choixJ1 = null;
+    private Choice choixJ2 = null;
 
-    Choice choixJ1 = null;
-    Choice choixJ2 = null;
+    private CommonStrategy strategie ;
+    private int leftPlayerId = -1;
 
-    CommonStrategy strategie ;
-    int leftPlayerId = -1;
+    private ArrayList<Tour> historique = new ArrayList<>();
 
-    ArrayList<Tour> historique = new ArrayList<>();
+    private int scorej1 = 0;
+    private int scoreJ2 = 0;
 
-    int scorej1 = 0;
-    int scoreJ2 = 0;
-
-
-    public int nbJoueurController = 0;
+    private int nbJoueurController = 0;
 
     public void redemarrerService(){
         this.choixJ1 = null;
@@ -43,22 +40,6 @@ public class GameService {
         scorej1 = 0;
         scoreJ2 = 0;
         nbJoueurController = 0;
-    }
-
-    public void printInfos(){
-        System.out.println("Choix J1: " + this.choixJ1);
-        System.out.println("Choix J2: " + this.choixJ2);
-        System.out.println("Strategie: " + this.strategie);
-        System.out.println("LeftPlayerId: " + this.leftPlayerId);
-        for (Tour tour : historique) {
-            System.out.println(tour);
-        }
-        System.out.println("Scorej1: " + this.scorej1);
-        System.out.println("ScoreJ2: " + this.scoreJ2);
-    }
-
-    public static GameService getInstance() {
-        return instance;
     }
 
     public ResultMessage processChoice(ChoiceMessage message) {

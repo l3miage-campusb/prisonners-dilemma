@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class StrategyPavlov extends StrategieAbstract{
 
-    private final SecureRandom secureRandom = new SecureRandom();
-
     public Choice inverse(Choice choice){
         if(choice==Choice.COOPERER) return Choice.TRAHIR;
         return Choice.COOPERER;
@@ -18,6 +16,9 @@ public class StrategyPavlov extends StrategieAbstract{
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
 
         if(historique.isEmpty()){
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;

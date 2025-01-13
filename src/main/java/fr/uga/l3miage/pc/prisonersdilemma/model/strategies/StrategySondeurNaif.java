@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 public class StrategySondeurNaif extends StrategieAbstract{
 
-    private final SecureRandom secureRandom = new SecureRandom();
     private static final double PROBABILITEALEATOIRE = 0.05; // 20% de probabilidad de jugar al azar
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
 
         if (historique.isEmpty()) {
             // En el primer turno, decide aleatoriamente entre TRAHIR y COOPERER

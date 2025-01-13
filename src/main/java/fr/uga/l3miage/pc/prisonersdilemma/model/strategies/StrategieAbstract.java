@@ -11,6 +11,8 @@ import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertChoiceContr
 import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertTurnsToTours;
 
 public abstract class StrategieAbstract implements CommonStrategy {
+    private long seed;
+
 
     @Override
     public contract.Choice makeChoice(Game game, int playerReplaced) {
@@ -18,4 +20,12 @@ public abstract class StrategieAbstract implements CommonStrategy {
     }
 
     public abstract Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace);
+
+    public void setSeed(long seed) {
+        this.seed = seed;
+    }
+
+    public long getSeed() {
+        return seed;
+    }
 }

@@ -18,6 +18,7 @@ class StrategySondeurNaifTest {
     void testFaireUnChoixHistoriqueVide() {
         // Test pour le cas où l'historique est vide
         StrategySondeurNaif strategie = new StrategySondeurNaif();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         Set<Choice> resultatsPossibles = EnumSet.of(Choice.COOPERER, Choice.TRAHIR);
@@ -33,6 +34,7 @@ class StrategySondeurNaifTest {
     void testFaireUnChoixProbabiliteAleatoire() {
         // Test pour le cas de probabilité aléatoire lorsque le dernier tour était COOPERER
         StrategySondeurNaif strategie = new StrategySondeurNaif();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.COOPERER, Choice.COOPERER));  // Dernier tour
 
@@ -52,6 +54,7 @@ class StrategySondeurNaifTest {
     void testFaireUnChoixImiteDernierMouvementAdversairePourJoueur1() {
         // Test pour vérifier que le joueur 1 imite le dernier mouvement du joueur 2
         StrategySondeurNaif strategie = new StrategySondeurNaif();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.COOPERER, Choice.TRAHIR));  // Dernier tour
 
@@ -63,6 +66,7 @@ class StrategySondeurNaifTest {
     void testFaireUnChoixImiteDernierMouvementAdversairePourJoueur2() {
         // Test pour vérifier que le joueur 2 imite le dernier mouvement du joueur 1
         StrategySondeurNaif strategie = new StrategySondeurNaif();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));  // Dernier tour
 
@@ -74,6 +78,7 @@ class StrategySondeurNaifTest {
     void testFaireUnChoixSansProbabiliteAleatoire() {
         // Test pour vérifier le comportement sans probabilité aléatoire
         StrategySondeurNaif strategie = new StrategySondeurNaif();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         historique.add(new Tour(Choice.TRAHIR, Choice.COOPERER));
 

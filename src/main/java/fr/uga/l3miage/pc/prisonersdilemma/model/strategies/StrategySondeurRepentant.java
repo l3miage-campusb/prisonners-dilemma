@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 public class StrategySondeurRepentant extends StrategieAbstract {
 
-    private final SecureRandom secureRandom = new SecureRandom();
     private static final double PROBABILITETRAHISON = 0.05; // Probabilité de trahir même après la coopération de l'adversaire
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
 
         if(historique.isEmpty()){
             return Choice.COOPERER; // Coopérer au premier tour

@@ -14,6 +14,7 @@ class StrategyDonnantDonnantAleatoireTest {
     void testFaireUnChoixAvecHistoriqueVide() {
         // Test avec historique vide
         StrategyDonnantDonnantAleatoire strategie = new StrategyDonnantDonnantAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Le choix doit être soit COOPERER, soit TRAHIR
@@ -28,6 +29,7 @@ class StrategyDonnantDonnantAleatoireTest {
     void testFaireUnChoixAvecHistoriqueAvecMouvements() {
         // Test avec historique contenant des choix précédents
         StrategyDonnantDonnantAleatoire strategie = new StrategyDonnantDonnantAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajout de mouvements à l'historique
@@ -49,6 +51,7 @@ class StrategyDonnantDonnantAleatoireTest {
     void testFaireUnChoixAleatoire() {
         // Test avec historique contenant des choix précédents
         StrategyDonnantDonnantAleatoire strategie = new StrategyDonnantDonnantAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajout de mouvements à l'historique

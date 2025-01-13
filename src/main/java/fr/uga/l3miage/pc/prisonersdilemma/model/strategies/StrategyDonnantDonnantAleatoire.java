@@ -7,11 +7,14 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class StrategyDonnantDonnantAleatoire extends StrategieAbstract{
-    private final SecureRandom secureRandom = new SecureRandom();
+
     private static final double PROBABILITEALEATOIRE = 0.05; // 20% de probabilité de jouer aléatoirement
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
+
         if (historique.isEmpty()) {
             // Au premier tour, décide aléatoirement entre TRAHIR et COOPERER
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;

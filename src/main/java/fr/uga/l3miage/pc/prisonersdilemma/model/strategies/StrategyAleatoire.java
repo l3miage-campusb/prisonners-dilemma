@@ -9,6 +9,7 @@ public class StrategyAleatoire extends StrategieAbstract {
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
         SecureRandom random = new SecureRandom();
+        random.setSeed(this.getSeed());
         return random.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
     }
 }

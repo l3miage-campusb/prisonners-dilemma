@@ -1,8 +1,8 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model;
 
 public class Tour {
-    static int compteur = 0;
-    int numero;
+    private static int compteur = 0;
+    private int numero;
     private Choice choixJoueur1;
     private Choice choixJoueur2;
 
@@ -13,11 +13,16 @@ public class Tour {
         this.numero = compteur;
     }
 
+
     public Choice getChoixJoueur1() {
         return choixJoueur1;
     }
 
     public Choice getChoixJoueur2() {
         return choixJoueur2;
+    }
+
+    public int getNumero() {
+        return numero;
     }
 }

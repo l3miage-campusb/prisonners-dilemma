@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class StrategyPavlovAleatoire extends StrategieAbstract{
 
-    private final SecureRandom secureRandom = new SecureRandom();
     private static final double PROBABILITEALEATOIRE = 0.05; //
 
     public Choice inverse(Choice choice){
@@ -19,6 +18,9 @@ public class StrategyPavlovAleatoire extends StrategieAbstract{
 
     @Override
     public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.setSeed(this.getSeed());
 
         if(historique.isEmpty()){
             return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;

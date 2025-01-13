@@ -15,6 +15,7 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
     void testFaireUnChoixAvecHistoriqueVide() {
         // Test avec historique vide
         StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
         Choice choix = strategie.faireUnChoix(historique, 1);
 
@@ -27,6 +28,7 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
     void testFaireUnChoixAvecHistoriqueAvecCoupEgaux() {
         // Préparer
         StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter quelques éléments à l'historique, les deux joueurs ont fait les mêmes choix
@@ -46,6 +48,7 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
     void testFaireUnChoixAvecHistoriqueNonRepete() {
         // Préparer
         StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés
@@ -65,6 +68,7 @@ class StrategyDonnantPourDeuxDonnantsAleatoireTest {
     void testFaireUnChoixAvecHistoriqueAvecCoupInverse() {
         // Préparer
         StrategyDonnantPourDeuxDonnantsAleatoire strategie = new StrategyDonnantPourDeuxDonnantsAleatoire();
+        strategie.setSeed(42);
         ArrayList<Tour> historique = new ArrayList<>();
 
         // Ajouter quelques éléments à l'historique, les deux joueurs ont fait des choix opposés

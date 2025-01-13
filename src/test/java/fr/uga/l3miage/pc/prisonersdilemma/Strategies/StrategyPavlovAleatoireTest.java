@@ -19,7 +19,7 @@ class StrategyPavlovAleatoireTest {
 
     @BeforeEach
     void setUp() {
-        strategy = new StrategyPavlovAleatoire();
+        strategy = new StrategyPavlovAleatoire(); strategy.setSeed(43);
     }
 
     @Test
