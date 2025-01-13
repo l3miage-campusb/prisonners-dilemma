@@ -1,11 +1,11 @@
 package fr.uga.l3miage.pc.prisonersdilemma.model;
 
 public class ResultMessage {
-    String reponseJ1;
-    String reponseJ2;
+    private String reponseJ1;
+    private String reponseJ2;
 
-    int scoreJ1;
-    int scoreJ2;
+    private int scoreJ1;
+    private int scoreJ2;
 
     public ResultMessage() {
         this.reponseJ1 = "";
@@ -25,7 +25,6 @@ public class ResultMessage {
     public void setReponseJ1(String reponseJ1) {
         this.reponseJ1 = reponseJ1;
     }
-
     public void setReponseJ2(String reponseJ2) {
         this.reponseJ2 = reponseJ2;
     }

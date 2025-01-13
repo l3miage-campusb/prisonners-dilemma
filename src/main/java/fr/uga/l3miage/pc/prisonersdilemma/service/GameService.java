@@ -20,16 +20,16 @@ public class GameService {
 
     private static final GameService instance = new GameService();
 
-    Choice choixJ1 = null;
-    Choice choixJ2 = null;
+    private Choice choixJ1 = null;
+    private Choice choixJ2 = null;
 
-    CommonStrategy strategie ;
-    int leftPlayerId = -1;
+    private CommonStrategy strategie ;
+    private int leftPlayerId = -1;
 
-    ArrayList<Tour> historique = new ArrayList<>();
+    private ArrayList<Tour> historique = new ArrayList<>();
 
-    int scorej1 = 0;
-    int scoreJ2 = 0;
+    private int scorej1 = 0;
+    private int scoreJ2 = 0;
 
 
     public static GameService getInstance() {
