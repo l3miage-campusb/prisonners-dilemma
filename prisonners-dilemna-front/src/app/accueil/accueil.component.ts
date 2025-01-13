@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { WebsocketService } from '../../services/websocket.service'; 
+import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
   selector: 'app-accueil',
@@ -44,7 +44,7 @@ export class AccueilComponent implements OnInit {
 
     //Une fois que l'on sait que le nombre de rounds a été recus, on passe a la page de jeu
     this.websocketService.getRoundObserver().subscribe(() => {
-      if(this.id<=2){
+      if(this.id<=2 ){
         this.router.navigate(['/game']);
       }
     });
