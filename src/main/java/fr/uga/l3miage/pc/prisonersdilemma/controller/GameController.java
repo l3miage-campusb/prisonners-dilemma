@@ -4,6 +4,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;

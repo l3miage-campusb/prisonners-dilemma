@@ -18,8 +18,6 @@ import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertToursToTurn
 @Service
 public class GameService {
 
-    private static final GameService instance = new GameService();
-
     private Choice choixJ1 = null;
     private Choice choixJ2 = null;
 
@@ -31,10 +29,6 @@ public class GameService {
     private int scorej1 = 0;
     private int scoreJ2 = 0;
 
-
-    public static GameService getInstance() {
-        return instance;
-    }
 
     public ResultMessage processChoice(ChoiceMessage message) {
 
