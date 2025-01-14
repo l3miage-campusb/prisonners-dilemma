@@ -1,8 +1,8 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Strategies;
 
-import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
-import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyAdaptatif;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Choice;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Tour;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.StrategyAdaptatif;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,8 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Strategies;
 
-import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
-import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.StrategyDonnantDonnant;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Choice;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Tour;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.StrategyDonnantDonnant;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

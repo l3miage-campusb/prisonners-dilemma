@@ -1,7 +1,7 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Strategies;
 
 import contract.CommonStrategy;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.*;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
