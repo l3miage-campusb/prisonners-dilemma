@@ -1,9 +1,9 @@
 package fr.uga.l3miage.pc.prisonersdilemma.Controller;
 
-import fr.uga.l3miage.pc.prisonersdilemma.controller.LeaveController;
-import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
+import fr.uga.l3miage.pc.prisonersdilemma.application.controller.LeaveController;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.LeaveMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.service.GameService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

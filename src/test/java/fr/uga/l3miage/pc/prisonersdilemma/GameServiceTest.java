@@ -1,11 +1,11 @@
 package fr.uga.l3miage.pc.prisonersdilemma;
 
-import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
-import fr.uga.l3miage.pc.prisonersdilemma.model.ChoiceMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.strategies.Strategy;
-import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Choice;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ChoiceMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.LeaveMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.Strategy;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.service.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
