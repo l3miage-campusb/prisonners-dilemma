@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class EndGameComponent {
 
+
+  openPage(){
+    window.open('https://candid-liger-6e7a01.netlify.app/', '_blank');
+}
 }

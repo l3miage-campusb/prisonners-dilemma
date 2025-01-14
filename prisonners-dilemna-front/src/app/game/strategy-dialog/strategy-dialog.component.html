@@ -1,6 +1,6 @@
 <h2>Choisissez une stratégie</h2>
 <div class="strategy-buttons">
-  <button *ngFor="let strategy of strategies" mat-button (click)="chooseStrategy(strategy)" >
+  <button *ngFor="let strategy of strategies" mat-button (click)="chooseStrategy(strategy)" [disabled]="isDisabled(strategy)">
     {{ strategy }}
   </button>
 </div>
