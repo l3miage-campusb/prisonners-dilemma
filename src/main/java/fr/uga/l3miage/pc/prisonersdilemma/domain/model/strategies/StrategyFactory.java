@@ -15,7 +15,6 @@ public class StrategyFactory {
     }
 
     public static CommonStrategy createStrategy(Strategy strategy) {
-        Random random = new Random();
         switch (strategy) {
             case ADAPTATIF:
                 return new StrategyAdaptatif(); // Assurez-vous que la classe existe et implémente IStrategy.

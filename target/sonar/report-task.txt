@@ -1,0 +1,6 @@
+projectKey=fr.uga.miage.m1:prisonners_dilemma_g1_2
+serverUrl=https://im2ag-sonar.univ-grenoble-alpes.fr
+serverVersion=9.9.7.96285
+dashboardUrl=https://im2ag-sonar.univ-grenoble-alpes.fr/dashboard?id=fr.uga.miage.m1%3Aprisonners_dilemma_g1_2
+ceTaskId=AZRmbdt2HNGfT05GI_Kx
+ceTaskUrl=https://im2ag-sonar.univ-grenoble-alpes.fr/api/ce/task?id=AZRmbdt2HNGfT05GI_Kx
