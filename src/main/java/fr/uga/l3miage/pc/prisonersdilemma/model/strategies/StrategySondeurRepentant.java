@@ -4,14 +4,14 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
+import java.util.List;
 
 public class StrategySondeurRepentant extends StrategieAbstract {
 
     private static final double PROBABILITETRAHISON = 0.05; // Probabilité de trahir même après la coopération de l'adversaire
 
     @Override
-    public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+    public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
 
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.setSeed(this.getSeed());

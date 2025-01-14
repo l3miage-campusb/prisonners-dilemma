@@ -3,7 +3,7 @@ package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StrategyRancunierDoux extends StrategieAbstract {
 
@@ -11,7 +11,7 @@ public class StrategyRancunierDoux extends StrategieAbstract {
     private int ultimaTraicionAdversario = -1; // Índice de la última traición válida del adversario fuera del castigo
 
     @Override
-    public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+    public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
         int indexAdversaire = (joueurRemplace == 1) ? 2 : 1;
 
         // Solo buscar una nueva traición si no estamos en un ciclo de castigo

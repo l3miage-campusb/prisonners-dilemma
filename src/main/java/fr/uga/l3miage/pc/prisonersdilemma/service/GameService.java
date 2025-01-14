@@ -110,7 +110,6 @@ public class GameService {
 
     public ResultMessage handleLeave(LeaveMessage message){
 
-        System.out.println("je hadnble leaves avec : "+message.getStrategy());
         this.strategie = StrategyFactory.createStrategy(message.getStrategy());
 
         this.leftPlayerId = message.getPlayerId();

@@ -1,12 +1,5 @@
 package fr.uga.l3miage.pc.prisonersdilemma.controller;
 
-import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
-
-
-import fr.uga.l3miage.pc.prisonersdilemma.model.LeaveMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.model.ResultMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 
@@ -27,9 +20,8 @@ public class RestartController {
 
 
     @MessageMapping("/restart")
-    public void handleRestart(String message) {
+    public void handleRestart() {
 
-        System.out.println(message);
         gameService.redemarrerService();
 
         messagingTemplate.convertAndSend("/topic/restart", "ZOERAAAAA");

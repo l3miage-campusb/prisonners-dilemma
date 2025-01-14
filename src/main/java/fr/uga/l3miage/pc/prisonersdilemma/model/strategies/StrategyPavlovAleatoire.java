@@ -4,7 +4,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
+import java.util.List;
 
 public class StrategyPavlovAleatoire extends StrategieAbstract{
 
@@ -17,7 +17,7 @@ public class StrategyPavlovAleatoire extends StrategieAbstract{
 
 
     @Override
-    public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+    public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
 
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.setSeed(this.getSeed());

@@ -5,7 +5,8 @@ import contract.Game;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertChoiceContract;
 import static fr.uga.l3miage.pc.prisonersdilemma.service.Util.convertTurnsToTours;
@@ -19,7 +20,7 @@ public abstract class StrategieAbstract implements CommonStrategy {
         return convertChoiceContract(faireUnChoix(convertTurnsToTours(game.getTurns()),playerReplaced));
     }
 
-    public abstract Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace);
+    public abstract Choice faireUnChoix(List<Tour> historique, int joueurRemplace);
 
     public void setSeed(long seed) {
         this.seed = seed;

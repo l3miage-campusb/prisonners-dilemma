@@ -5,7 +5,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StrategyAdaptatif extends StrategieAbstract {
 
@@ -16,7 +16,7 @@ public class StrategyAdaptatif extends StrategieAbstract {
     };
 
     @Override
-    public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+    public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
 
         if(historique.size() < SEQUENCEINITIALELENGTH) {
             return sequenceInitiale[historique.size()];
@@ -43,8 +43,6 @@ public class StrategyAdaptatif extends StrategieAbstract {
         double scoreMoyenCooperation = (countCooperation > 0) ? scoreTotalCooperation / countCooperation : 0;
         double scoreMoyenTrahison = (countTrahison > 0) ? scoreTotalTrahison / countTrahison : 0;
 
-        System.out.println("scoreMoyenCooperation : " + scoreMoyenCooperation);
-        System.out.println("scoreMoyenTrahison : " + scoreMoyenTrahison);
         return (scoreMoyenCooperation >= scoreMoyenTrahison) ? Choice.COOPERER : Choice.TRAHIR;
     }
 

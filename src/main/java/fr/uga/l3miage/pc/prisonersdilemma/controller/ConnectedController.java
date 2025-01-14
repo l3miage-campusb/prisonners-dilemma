@@ -4,7 +4,6 @@ package fr.uga.l3miage.pc.prisonersdilemma.controller;
 import fr.uga.l3miage.pc.prisonersdilemma.service.GameService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -12,7 +11,7 @@ public class ConnectedController {
 
 
     private final GameService gameService;
-    public ConnectedController(SimpMessagingTemplate messagingTemplate, GameService gameService) {
+    public ConnectedController(GameService gameService) {
         this.gameService = gameService;
     }
 

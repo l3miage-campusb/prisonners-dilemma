@@ -6,10 +6,13 @@ import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class Util {
+    private Util() {}
 
-    public static ArrayList<Tour> convertTurnsToTours(Turn[] turns) {
+    public static List<Tour> convertTurnsToTours(Turn[] turns) {
         ArrayList<Tour> tours = new ArrayList<>();
         for (Turn turn : turns) {
             Choice choixJoueur1 = convertChoice(turn.getPlayerOneChoice());
@@ -20,7 +23,7 @@ public class Util {
         return tours;
     }
 
-    public static Turn[] convertToursToTurns(ArrayList<Tour> tours) {
+    public static Turn[] convertToursToTurns(List<Tour> tours) {
         Turn[] turns = new Turn[tours.size()];
         for (int i = 0; i < tours.size(); i++) {
             Tour tour = tours.get(i);

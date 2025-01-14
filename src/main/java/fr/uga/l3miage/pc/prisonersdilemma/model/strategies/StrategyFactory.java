@@ -4,9 +4,11 @@ package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
 import contract.CommonStrategy;
 import fr.uga.l3miage.pc.prisonersdilemma.strategies.*;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class StrategyFactory {
+    private static final SecureRandom secureRandom = new SecureRandom();
 
     private StrategyFactory(){
 
@@ -60,19 +62,19 @@ public class StrategyFactory {
             case GRADUALSTRATEGY:
                 return new GradualStrategy();
             case NAIVEPEACEMAKER:
-                return new NaivePeacemaker(random);
+                return new NaivePeacemaker(secureRandom);
             case PAVLOV2:
                 return new Pavlov();
             case PAVLORANDOM:
-                return new PavlovRandom(random);
+                return new PavlovRandom(secureRandom);
             case PEACEMAKER:
-                return new Peacemaker(random);
+                return new Peacemaker(secureRandom);
             case POLLSTERRANDOMBETRAY:
-                return new PollsterRandomBetray(random);
+                return new PollsterRandomBetray(secureRandom);
             case RANDOMSTRATEGY:
-                return new RandomStrategy(random);
+                return new RandomStrategy(secureRandom);
             case REPENTANTPOLLSTER:
-                return new RepentantPollster(random);
+                return new RepentantPollster(secureRandom);
             case RESENTFULSTRATEGY:
                 return new ResentfulStrategy();
             case SOFTRESENTFUL:
@@ -80,14 +82,13 @@ public class StrategyFactory {
             case TITFORTAT:
                 return new TitforTat();
             case TITFORTATRANDOM:
-                return new TitforTatRandom(random);
+                return new TitforTatRandom(secureRandom);
             case TITFORTATSUSPICIOUS:
                 return new TitForTatSuspicious();
             case TITFORTWOTATS:
                 return new TitforTwoTats();
             case TITFORTWOTATSRANDOM:
-                return new TitforTatRandom(random);
-
+                return new TitforTatRandom(secureRandom);
 
             default:
                 throw new IllegalArgumentException("Stratégie inconnue : " + strategy);

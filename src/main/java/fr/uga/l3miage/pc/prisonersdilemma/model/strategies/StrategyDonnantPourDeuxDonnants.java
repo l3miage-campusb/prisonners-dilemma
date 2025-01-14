@@ -3,7 +3,7 @@ package fr.uga.l3miage.pc.prisonersdilemma.model.strategies;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Choice;
 import fr.uga.l3miage.pc.prisonersdilemma.model.Tour;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StrategyDonnantPourDeuxDonnants extends StrategieAbstract{
 
@@ -25,7 +25,7 @@ public class StrategyDonnantPourDeuxDonnants extends StrategieAbstract{
 
 
     @Override
-    public Choice faireUnChoix(ArrayList<Tour> historique, int joueurRemplace) {
+    public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
 
         if(historique.size() < 2){
             return Choice.COOPERER;
