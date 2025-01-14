@@ -16,38 +16,32 @@ public class StrategyPavlov extends StrategieAbstract{
 
     @Override
     public Choice faireUnChoix(List<Tour> historique, int joueurRemplace) {
-
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.setSeed(this.getSeed());
 
-        if(historique.isEmpty()){
-            return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
+        if (historique.isEmpty()) {
+            return choixAleatoire(secureRandom);
         }
 
-        Tour dernierTour = historique.get(historique.size()-1);
+        Tour dernierTour = historique.get(historique.size() - 1);
 
-        if(joueurRemplace==1){
-            if(dernierTour.getChoixJoueur1()==Choice.TRAHIR && dernierTour.getChoixJoueur2()==Choice.COOPERER){   //J1 obtient 5 points
-                return Choice.TRAHIR;
-            }
-            if(dernierTour.getChoixJoueur1()==Choice.COOPERER && dernierTour.getChoixJoueur2()==Choice.COOPERER){
-                return Choice.COOPERER;
-            }else{
-                return inverse(dernierTour.getChoixJoueur1());
-            }
-        }
-
-        else{
-            if(dernierTour.getChoixJoueur2()==Choice.TRAHIR && dernierTour.getChoixJoueur1()==Choice.COOPERER){
-                return Choice.TRAHIR;
-            }
-            if(dernierTour.getChoixJoueur1()==Choice.COOPERER && dernierTour.getChoixJoueur2()==Choice.COOPERER){
-                return Choice.COOPERER;
-            }else{
-                return inverse(dernierTour.getChoixJoueur2());
-            }
-        }
+        return joueurRemplace == 1
+                ? choixPourJoueur(dernierTour.getChoixJoueur1(), dernierTour.getChoixJoueur2())
+                : choixPourJoueur(dernierTour.getChoixJoueur2(), dernierTour.getChoixJoueur1());
     }
 
+    private Choice choixAleatoire(SecureRandom secureRandom) {
+        return secureRandom.nextBoolean() ? Choice.COOPERER : Choice.TRAHIR;
+    }
 
+    private Choice choixPourJoueur(Choice choixPrincipal, Choice choixAdverse) {
+        if (choixPrincipal == Choice.TRAHIR && choixAdverse == Choice.COOPERER) {
+            return Choice.TRAHIR;
+        }
+        if (choixPrincipal == Choice.COOPERER && choixAdverse == Choice.COOPERER) {
+            return Choice.COOPERER;
+        }
+        return inverse(choixPrincipal);
+
+    }
 }

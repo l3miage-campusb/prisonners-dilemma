@@ -5,7 +5,7 @@ import contract.CommonStrategy;
 import fr.uga.l3miage.pc.prisonersdilemma.strategies.*;
 
 import java.security.SecureRandom;
-import java.util.Random;
+
 
 public class StrategyFactory {
     private static final SecureRandom secureRandom = new SecureRandom();
