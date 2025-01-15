@@ -7,6 +7,7 @@ import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ResultMessage;
+import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.Strategy;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.StrategyFactory;
 
 import org.springframework.stereotype.Service;
@@ -129,18 +130,26 @@ public class GameService implements IGameService {
     public void setChoixJ1(Choice choixJ1) {
         this.choixJ1 = choixJ1;
     }
+    public Choice getChoixJ1() {return this.choixJ1;}
 
     public void setChoixJ2(Choice choixJ2) {
         this.choixJ2 = choixJ2;
     }
+    public Choice getChoixJ2() {return this.choixJ2;}
 
     public void setScorej1(int scorej1) {
         this.scorej1 = scorej1;
     }
+    public int getScorej1() {return this.scorej1;}
 
     public void setScoreJ2(int scoreJ2) {
         this.scoreJ2 = scoreJ2;
     }
+    public int getScorej2() {return this.scoreJ2;}
+
+    public CommonStrategy getStrategy() {return this.strategie;}
+    public int getLeftPlayerId() {return this.leftPlayerId;}
+    public ArrayList<Tour> getHistorique() {return this.historique;}
 
     public int getNbJoueurController() {
         return nbJoueurController;
