@@ -6,7 +6,7 @@ Ce template va avoir deux mains différentes :
 
 
 
-Pour utilsier le projet : 
+Pour utiliser le projet : 
 
 Lancer le serveur  : 
 à la racine du projet :
@@ -14,21 +14,36 @@ mvn clean install -U   puis mvn spring-boot:run
 
 Si vous rencontrez des erreurs, possiblement car trop anciene version de java, utiliser la 21 de préférence.
 
-Pusi lancer le front (à retrouvez dans le dossier prisonners-dilemna-front) : 
+Puis lancer le front (à retrouvez dans le dossier prisonners-dilemna-front) : 
 
 ng serve
 
 PS:
 
-Du à la présence d'aléatoire, il se peut parfois que certains tests ne passent pas.
+
 
 Pour le déploiment : utilisation de railway pour le back à l'adresse https://web-production-d29a4.up.railway.app
                                     et de netlify pour le front à l'adresse : https://candid-liger-6e7a01.netlify.app
 
-Le serveur ne fonctionant que pour une partie en l'état actuel, en cas de mauvaise manip ou de partie deja jouer il faut redémarrer le serveur,
-(envoie moi une message je le fais depuis mon téléphone, oui c est pas ouf)
 
-Concernant le partage des stratégies, la tentative est sur la branche share-startegies et non sur main car cela cassait le déploiement et je n'ai pas eu le
-temps de régler ca (la facon d ajouter mes jar dans le pom avec le scope system marchait pas pour le déploiment), en local ca tournait presque mais encore quelques problèmes.
 
+Dans le front, les boutons pour quitter en utilisant une des stratégies de l'autre binome sont disabled car "la chaine" est faite
+mais les fonctions dans les jar plantent lorsque que l'on essaie de les utiliser, probèmes de types surement.
+
+🌟 Ode à la libération 🌟
+
+Enfin s’efface l’ombre du dilemme,
+Le poids des chaînes n’est plus qu’un emblème.
+Chaque choix gravé dans l’éternité,
+Trace le chemin vers la liberté.
+
+Trahir ou coopérer, la balance vacillait,
+Mais l’esprit tenace jamais ne pliait.
+Aux règles du jeu, un défi relevé,
+Prisonnier du doute, mais toujours éveillé.
+
+Et voici l’aube d’un monde nouveau,
+Où le vent porte un chant, doux et beau.
+Libre je suis, des murs délivré,
+Le dilemme s’éteint, je peux enfin rêver.
 

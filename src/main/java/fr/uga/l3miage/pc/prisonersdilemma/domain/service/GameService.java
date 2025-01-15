@@ -7,12 +7,12 @@ import fr.uga.l3miage.pc.prisonersdilemma.domain.model.Tour;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ChoiceMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.LeaveMessage;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.ResultMessage;
-import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.Strategy;
 import fr.uga.l3miage.pc.prisonersdilemma.domain.model.strategies.StrategyFactory;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static fr.uga.l3miage.pc.prisonersdilemma.domain.service.Util.convertChoice;
 import static fr.uga.l3miage.pc.prisonersdilemma.domain.service.Util.convertToursToTurns;
@@ -149,7 +149,7 @@ public class GameService implements IGameService {
 
     public CommonStrategy getStrategy() {return this.strategie;}
     public int getLeftPlayerId() {return this.leftPlayerId;}
-    public ArrayList<Tour> getHistorique() {return this.historique;}
+    public List<Tour> getHistorique() {return this.historique;}
 
     public int getNbJoueurController() {
         return nbJoueurController;
