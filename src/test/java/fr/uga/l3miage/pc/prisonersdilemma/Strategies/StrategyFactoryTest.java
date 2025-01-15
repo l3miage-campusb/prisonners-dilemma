@@ -105,11 +105,5 @@ class StrategyFactoryTest {
         assertTrue(strategy instanceof StrategyPavlovAleatoire);
     }
 
-//    @Test
-//    void testCreateUnknownStrategyThrowsException() {
-//        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-//            StrategyFactory.createStrategy(null); // Passer une stratégie inconnue
-//        });
-//        assertEquals("Stratégie inconnue : null", exception.getMessage());
-//    }
+
 }

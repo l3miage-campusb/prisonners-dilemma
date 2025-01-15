@@ -9,6 +9,8 @@ import fr.uga.l3miage.pc.prisonersdilemma.domain.service.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -28,6 +30,23 @@ class GameServiceTest {
     }
 
     GameService gameService = new GameService();
+
+    @Test
+    void testRedemarrerService() {
+        // Ejecutar el método redemarrerService()
+        gameService.redemarrerService();
+
+        // Verificar que todas las variables se han reiniciado correctamente
+        assertNull(gameService.getChoixJ1(), "choixJ1 no se reinició correctamente");
+        assertNull(gameService.getChoixJ2(), "choixJ2 no se reinició correctamente");
+        assertNull(gameService.getStrategy(), "La estrategia no se reinició correctamente");
+        assertEquals(-1, gameService.getLeftPlayerId(), "leftPlayerId no se reinició correctamente");
+        assertEquals(0, gameService.getNbJoueurController(), "nbJoueurController no se reinició correctamente");
+        assertEquals(0, gameService.getScorej1(), "scorej1 no se reinició correctamente");
+        assertEquals(0, gameService.getScorej2(), "scoreJ2 no se reinició correctamente");
+        assertEquals(new ArrayList<>(), gameService.getHistorique(), "El historial no se reinició correctamente");
+    }
+
     @Test
     void testProcessChoiceTrahirTrahir() {
         // Arrange
